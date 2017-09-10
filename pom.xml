@@ -7,6 +7,7 @@
     <groupId>com.linuxea</groupId>
     <artifactId>myblog</artifactId>
     <version>1.0</version>
+    <packaging>war</packaging>
 
     <dependencies>
 

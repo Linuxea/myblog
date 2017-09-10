@@ -13,7 +13,7 @@ public class TagManagerController extends Controller {
     private static final TagManagerService SERVICE = TagManagerService.SERVICE;
 
     public void index() {
-
+        super.renderJson("hello");
     }
 
     public void add() {
