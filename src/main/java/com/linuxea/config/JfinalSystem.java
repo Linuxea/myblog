@@ -9,6 +9,7 @@ import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.linuxea.controller.articlemanager.ArticleManagerController;
 import com.linuxea.controller.classmanager.ClassManagerController;
+import com.linuxea.controller.index.IndexController;
 import com.linuxea.controller.tagmanager.TagManagerController;
 import com.linuxea.interceptor.ExceptionInterceptor;
 import com.linuxea.model._MappingKit;
@@ -30,6 +31,7 @@ public class JfinalSystem extends JFinalConfig {
 
     @Override
     public void configRoute(Routes me) {
+        me.add("/", IndexController.class);
         me.add("tagController", TagManagerController.class);
         me.add("kindController", ClassManagerController.class);
         me.add("articleController", ArticleManagerController.class);
