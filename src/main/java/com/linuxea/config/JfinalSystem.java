@@ -45,7 +45,7 @@ public class JfinalSystem extends JFinalConfig {
         DruidPlugin druidPlugin = getDruidPlugin();
         me.add(druidPlugin);
         ActiveRecordPlugin arp=new ActiveRecordPlugin(druidPlugin);
-        arp.setShowSql(PropKit.getBoolean("devMode"));
+        arp.setShowSql(true);
         arp.setDialect(new MysqlDialect());
         _MappingKit.mapping(arp);
         me.add(arp);
