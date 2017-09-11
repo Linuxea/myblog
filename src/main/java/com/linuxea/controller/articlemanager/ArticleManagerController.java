@@ -1,7 +1,7 @@
 package com.linuxea.controller.articlemanager;
 
-import com.jfinal.core.Controller;
 import com.jfinal.kit.Kv;
+import com.linuxea.controller.base.BaseController;
 import com.linuxea.model.Article;
 import com.linuxea.service.articlemanager.AriticleManagerService;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * 文章管理
  * Created by Linuxea on 2017-09-11.
  */
-public class ArticleManagerController extends Controller {
+public class ArticleManagerController extends BaseController {
 
     private static final AriticleManagerService ARITICLE_MANAGER_SERVICE = AriticleManagerService.SERVICE;
 

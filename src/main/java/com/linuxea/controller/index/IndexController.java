@@ -1,11 +1,11 @@
 package com.linuxea.controller.index;
 
-import com.jfinal.core.Controller;
+import com.linuxea.controller.base.BaseController;
 
 /**
  * Created by Linuxea on 2017-09-11.
  */
-public class IndexController extends Controller {
+public class IndexController extends BaseController {
 
     public void index() {
         renderJsp("index.html");

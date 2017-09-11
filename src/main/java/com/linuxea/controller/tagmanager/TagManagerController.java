@@ -1,6 +1,6 @@
 package com.linuxea.controller.tagmanager;
 
-import com.jfinal.core.Controller;
+import com.linuxea.controller.base.BaseController;
 import com.linuxea.model.Tag;
 import com.linuxea.service.tagmanager.TagManagerService;
 
@@ -8,7 +8,7 @@ import com.linuxea.service.tagmanager.TagManagerService;
  * 标签管理
  * Created by Linuxea on 2017-09-11.
  */
-public class TagManagerController extends Controller {
+public class TagManagerController extends BaseController {
 
     private static final TagManagerService SERVICE = TagManagerService.SERVICE;
 

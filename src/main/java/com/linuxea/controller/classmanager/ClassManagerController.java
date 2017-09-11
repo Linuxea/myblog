@@ -1,6 +1,6 @@
 package com.linuxea.controller.classmanager;
 
-import com.jfinal.core.Controller;
+import com.linuxea.controller.base.BaseController;
 import com.linuxea.model.Kind;
 import com.linuxea.service.classmanager.ClassManagerService;
 
@@ -8,7 +8,7 @@ import com.linuxea.service.classmanager.ClassManagerService;
  * 文章类别管理
  * Created by Linuxea on 2017-09-10.
  */
-public class ClassManagerController extends Controller {
+public class ClassManagerController extends BaseController {
 
     private ClassManagerService service = ClassManagerService.service;
 
