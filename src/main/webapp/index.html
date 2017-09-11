@@ -10,8 +10,9 @@
     <style type="text/css">
         .row {
             max-height: 320px;
-            overflow: auto
+            overflow: hidden;
         }
+
     </style>
 </head>
 <body>
@@ -40,8 +41,8 @@
                             htmlStr += "<p class=\"lead\">" + rs[i].content + "</p>";
                             htmlStr += "</div>";
                             htmlStr += "<p>" + rs[i].create_time + "</p>";
-                            htmlStr += "<button class=\"btn btn-primary pull-right\" data-id=" + rs[i].id + ">continue</button>";
-                            htmlStr += "<div class=\"row\"><br/><br/><br/></div>";
+                            htmlStr += "<button class=\"btn btn-primary pull-right \" data-id=" + rs[i].id + ">continue</button>";
+                            htmlStr += "<div class=\"row\" style='border-top: 1px solid black;' ><br/><br/><br/></div>";
                         }
 
                         $("div.container").append(htmlStr);
