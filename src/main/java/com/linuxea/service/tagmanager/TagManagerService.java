@@ -1,6 +1,6 @@
 package com.linuxea.service.tagmanager;
 
-import com.jfinal.plugin.activerecord.Model;
+import com.linuxea.model.Tag;
 
 /**
  * Created by Linuxea on 2017-09-11.
@@ -9,16 +9,16 @@ public class TagManagerService {
 
     public static final TagManagerService SERVICE = new TagManagerService();
 
-    public boolean add(Model<?> model) {
-        return model.save();
+    public boolean add(Tag tag) {
+        return tag.save();
     }
 
-    public boolean update(Model<?> model) {
-        return model.update();
+    public boolean update(Tag tag) {
+        return tag.update();
     }
 
-    public boolean delete(Model<?> model) {
-        return model.delete();
+    public boolean delete(Tag tag) {
+        return tag.delete();
     }
 
     public void find() {

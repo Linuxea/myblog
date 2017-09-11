@@ -1,6 +1,5 @@
 package com.linuxea.service.classmanager;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.linuxea.model.Kind;
 
 /**
@@ -10,8 +9,8 @@ public class ClassManagerService {
 
     public static final ClassManagerService service = new ClassManagerService();
 
-    public boolean add(Model<?> model) {
-        return model.save();
+    public boolean add(Kind kind) {
+        return kind.save();
     }
 
     public boolean delete(String id) {
@@ -20,8 +19,8 @@ public class ClassManagerService {
         return kind.delete();
     }
 
-    public boolean update(Model<?> model) {
-        return model.update();
+    public boolean update(Kind kind) {
+        return kind.update();
     }
 
 }
