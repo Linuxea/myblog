@@ -3,6 +3,7 @@ package com.linuxea.service.tagmanager;
 import com.google.common.collect.Lists;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import com.linuxea.model.Article;
 import com.linuxea.model.Tag;
 import com.linuxea.utils.IdKits;
 
@@ -56,4 +57,22 @@ public class TagManagerService {
 		return labelsIds;
 	}
 
+	/**
+	 * 获取文章的关联tag
+	 *
+	 * @param article
+	 */
+	public List<Record> getTagNamesByArticleName(Article article) {
+		String sql = "select tag.name\n" +
+				"\n" +
+				"from article \n" +
+				"\n" +
+				"left join article_with_tag on article_with_tag.article_id = article.id \n" +
+				"\n" +
+				"left join tag on tag.id = article_with_tag.tag_id\n" +
+				"\n" +
+				"where article.id = ?";
+		List<Record> tagNameList = Db.find(sql, article.getId());
+		return tagNameList;
+	}
 }

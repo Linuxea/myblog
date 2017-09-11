@@ -1,12 +1,16 @@
 package com.linuxea.controller.articlemanager;
 
+import com.google.common.collect.Maps;
 import com.jfinal.core.paragetter.Para;
 import com.jfinal.kit.Kv;
+import com.jfinal.plugin.activerecord.Record;
 import com.linuxea.controller.base.BaseController;
 import com.linuxea.model.Article;
 import com.linuxea.service.articlemanager.AriticleManagerService;
+import com.linuxea.service.tagmanager.TagManagerService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 文章管理
@@ -15,8 +19,9 @@ import java.util.List;
 public class ArticleManagerController extends BaseController {
 
     private static final AriticleManagerService ARITICLE_MANAGER_SERVICE = AriticleManagerService.SERVICE;
+	private static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
 
-    /**
+	/**
      * 主页跳转
      */
     public void index() {
@@ -29,8 +34,12 @@ public class ArticleManagerController extends BaseController {
      */
     public void loadOne() {
         Article article = ARITICLE_MANAGER_SERVICE.loadOne(getPara("id"));
-        renderJson(article);
-    }
+		List<Record> records = TAG_MANAGER_SERVICE.getTagNamesByArticleName(article);
+		Map<String, Object> dataMap = Maps.newHashMap();
+		dataMap.put("article", article);
+		dataMap.put("tagNames", records);
+		renderJson(dataMap);
+	}
 
     /**
      * 新增文章

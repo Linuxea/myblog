@@ -8,6 +8,22 @@
     <script type="text/javascript" src="plugin/jq.js"></script>
     <script src="plugin/bootstrap.js"></script>
     <style type="text/css">
+        .label-success {
+            background-color: #5cb85c;
+        }
+
+        .label {
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 75%;
+            font-weight: bold;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+        }
     </style>
 </head>
 <body>
@@ -19,16 +35,23 @@
        $.ajax({
             url:"/articleController/loadOne",
            data: {"id": id},
-            success:function(rs){
+           success: function (result) {
+               var article = result.article;
+               var tagNames = result.tagNames;
                 var htmlStr = "";
-                htmlStr += "<div class=\"page-header\">";
-                htmlStr += "<h1 class='bg-primary'>" + rs.title + "</h1>";
+               htmlStr += "<div class=\"page-header row\">";
+               htmlStr += "<h1 class='bg-primary'>" + article.title + "</h1>";
                 htmlStr += "</div>";
-                htmlStr += "<div>";
+               htmlStr += "<div class='row' id='labelList'>";
+               for (let i = 0; i < tagNames.length; i++) {
+                   htmlStr += "<span class=\"label label-success\">" + tagNames[i].name + "</span>&nbsp;";
+               }
+               htmlStr += "</div>";
+               htmlStr += "<div class='row'>";
                 htmlStr += "<p class=\"lead\">";
-                htmlStr += rs.content;
+               htmlStr += article.content;
                 htmlStr += "</p>";
-                htmlStr += "<p>" + rs.create_time + "</p>";
+               htmlStr += "<p>" + article.create_time + "</p>";
                 htmlStr += " </div>";
                 htmlStr += " <div class=\"row\">\n" +
                     "<button class=\"btn btn-success pull-right\">back</button>\n" +
