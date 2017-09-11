@@ -1,6 +1,7 @@
 package com.linuxea.config;
 
 import com.jfinal.config.*;
+import com.jfinal.ext.interceptor.Restful;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
@@ -40,7 +41,8 @@ public class JfinalSystem extends JFinalConfig {
     public void configConstant(Constants me) {
         me.setDevMode(true);
         me.setViewType(ViewType.JSP);
-    }
+//        me.setError404View("404.html");
+	}
 
     @Override
     public void configRoute(Routes me) {
@@ -68,7 +70,8 @@ public class JfinalSystem extends JFinalConfig {
 
     @Override
     public void configInterceptor(Interceptors me) {
-        me.add(new ExceptionInterceptor());
+		me.add(new Restful());
+		me.add(new ExceptionInterceptor());
     }
 
     @Override
