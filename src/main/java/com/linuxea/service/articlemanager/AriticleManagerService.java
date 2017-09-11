@@ -1,5 +1,6 @@
 package com.linuxea.service.articlemanager;
 
+import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Model;
 
 /**
@@ -9,8 +10,14 @@ public class AriticleManagerService {
 
     public static final AriticleManagerService SERVICE = new AriticleManagerService();
 
-    public boolean add(Model<?> model) {
-        return model.save();
+    public Kv add(Model<?> model) {
+        Kv kv = Kv.create();
+        if (model.save()) {
+            kv.set("stateCode", "ok");
+        } else {
+            kv.set("stateCode", "notok");
+        }
+        return kv;
     }
 
     public boolean update(Model<?> model) {
