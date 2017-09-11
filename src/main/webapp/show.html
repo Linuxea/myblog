@@ -44,6 +44,7 @@
                 htmlStr += "</div>";
                htmlStr += "<div class='row' id='labelList'>";
                for (let i = 0; i < tagNames.length; i++) {
+                   if (!tagNames[i].name) continue;
                    htmlStr += "<span class=\"label label-success\">" + tagNames[i].name + "</span>&nbsp;";
                }
                htmlStr += "</div>";
