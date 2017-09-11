@@ -10,7 +10,8 @@ create table kind(
 
 create table article(
 	id varchar(36) not null,
-	name varchar(50) not null,
+	title varchar(50) not null,
+    content text null,
 	create_time datetime,
 	primary key(id)
 );

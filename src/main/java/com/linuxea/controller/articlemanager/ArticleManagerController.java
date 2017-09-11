@@ -1,5 +1,6 @@
 package com.linuxea.controller.articlemanager;
 
+import com.jfinal.core.paragetter.Para;
 import com.jfinal.kit.Kv;
 import com.linuxea.controller.base.BaseController;
 import com.linuxea.model.Article;
@@ -19,7 +20,8 @@ public class ArticleManagerController extends BaseController {
      * 主页跳转
      */
     public void index() {
-    }
+		super.renderJsp("/plugin/JHtmlArea/edit.html");
+	}
 
 
     /**
@@ -33,9 +35,9 @@ public class ArticleManagerController extends BaseController {
     /**
      * 新增文章
      */
-    public void add() {
-        Kv kv = ARITICLE_MANAGER_SERVICE.add(getModel(Article.class, ""));
-        renderJson(kv);
+	public void add(@Para("") Article article) {
+		Kv kv = ARITICLE_MANAGER_SERVICE.add(article);
+		renderJson(kv);
     }
 
     /**
@@ -48,9 +50,9 @@ public class ArticleManagerController extends BaseController {
     /**
      * 删除文章
      */
-    public void delete() {
-        ARITICLE_MANAGER_SERVICE.delete(getModel(Article.class));
-    }
+	public void delete(@Para("") Article article) {
+		ARITICLE_MANAGER_SERVICE.delete(article);
+	}
 
     /**
      * 列出文章

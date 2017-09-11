@@ -28,8 +28,8 @@ public class GenerateModel {
 
     public static void main(String[] args) {
         // base model 所使用的包名
-        String baseModelPackageName = "com.linuxea.model";
-        // base model 文件保存路径
+		String baseModelPackageName = "com.linuxea.model.base";
+		// base model 文件保存路径
         String baseModelOutputDir = PathKit.getWebRootPath()
                 + "/src/main/java/com/linuxea/model/base";
 

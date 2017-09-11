@@ -8,7 +8,6 @@ import com.linuxea.controller.base.BaseController;
 public class IndexController extends BaseController {
 
     public void index() {
-		renderJson(getPara("id"));
 	}
 
 

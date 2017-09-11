@@ -1,7 +1,6 @@
 package com.linuxea.config;
 
 import com.jfinal.config.*;
-import com.jfinal.ext.interceptor.Restful;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
@@ -70,7 +69,7 @@ public class JfinalSystem extends JFinalConfig {
 
     @Override
     public void configInterceptor(Interceptors me) {
-		me.add(new Restful());
+//		me.add(new Restful());
 		me.add(new ExceptionInterceptor());
     }
 
