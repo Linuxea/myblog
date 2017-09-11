@@ -1,7 +1,10 @@
 package com.linuxea.service.articlemanager;
 
 import com.jfinal.kit.Kv;
-import com.jfinal.plugin.activerecord.Model;
+import com.linuxea.model.Article;
+import com.linuxea.utils.IdKits;
+
+import java.util.Date;
 
 /**
  * Created by Linuxea on 2017-09-11.
@@ -10,9 +13,11 @@ public class AriticleManagerService {
 
     public static final AriticleManagerService SERVICE = new AriticleManagerService();
 
-    public Kv add(Model<?> model) {
+    public Kv add(Article article) {
         Kv kv = Kv.create();
-        if (model.save()) {
+        article.setCreateTime(new Date());
+        article.setId(IdKits.wantId());
+        if (article.save()) {
             kv.set("stateCode", "ok");
         } else {
             kv.set("stateCode", "notok");
@@ -20,12 +25,12 @@ public class AriticleManagerService {
         return kv;
     }
 
-    public boolean update(Model<?> model) {
-        return model.update();
+    public boolean update(Article article) {
+        return article.update();
     }
 
-    public boolean delete(Model<?> model) {
-        return model.delete();
+    public boolean delete(Article article) {
+        return article.delete();
     }
 
     /**
@@ -35,4 +40,12 @@ public class AriticleManagerService {
 
     }
 
+    /**
+     * 加载一条详情
+     *
+     * @param id
+     */
+    public Article loadOne(String id) {
+        return Article.dao.findById(id);
+    }
 }

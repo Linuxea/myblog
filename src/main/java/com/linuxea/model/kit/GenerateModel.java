@@ -1,9 +1,9 @@
 package com.linuxea.model.kit;
 
-import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
-import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.kit.PathKit;
+import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.activerecord.generator.Generator;
+import com.jfinal.plugin.druid.DruidPlugin;
 import com.linuxea.config.JfinalSystem;
 
 import javax.sql.DataSource;
@@ -33,7 +33,7 @@ public class GenerateModel {
         String baseModelOutputDir = PathKit.getWebRootPath()
                 + "/src/main/java/com/linuxea/model/base";
 
-        System.out.println("输出路径："+ baseModelOutputDir);
+        System.out.println("输出路径：" + baseModelOutputDir);
 
         // model 所使用的包名 (MappingKit 默认使用的包名)
         String modelPackageName = "com.linuxea.model";

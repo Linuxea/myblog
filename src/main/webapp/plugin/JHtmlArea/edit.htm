@@ -21,6 +21,7 @@
         div.jHtmlArea { border: solid 1px #ccc; }
 
 
+
     </style>
 </head>
 <body>
@@ -32,11 +33,10 @@
 
 
 </textarea>
-<input type="button" id="save" value="save" onclick="alert($('#txtDefaultHtmlArea').htmlarea('html'));"/>
+<input type="button" id="save" value="save"/>
 <input type="button" value="Set HTML"
        onclick="$('#txtDefaultHtmlArea').htmlarea('html', 'Some <strong>HTML</strong> value.')"/>
-<input type="button" value="Change Color to Blue" onclick="$('#txtDefaultHtmlArea').htmlarea('forecolor', 'blue');"/>
-
+<!--<input type="button" value="Change Color to Blue" onclick="$('#txtDefaultHtmlArea').htmlarea('forecolor', 'blue');"/>-->
 
 <script type="text/javascript">
         // You can do this to perform a global override of any of the "default" options
@@ -46,7 +46,9 @@
             //$("textarea").htmlarea(); // Initialize all TextArea's as jHtmlArea's with default values
             $("#txtDefaultHtmlArea").htmlarea(); // Initialize jHtmlArea's with all default values
 
-            $("#save").on("click", function(){
+
+            // jq 版本问题
+            $("#save").click(function(){
                 $.ajax({
                     url:"/articleController/add",
                     type:"post",
@@ -56,7 +58,7 @@
                     },
                     success:function(rs){
                         if(rs.stateCode === 'ok'){
-
+                            alert("save ok");
                         }else{
 
                         }
@@ -65,8 +67,10 @@
                         // errro
                     }
                 });
-            })
+            });
+
         });
+
 
 
 </script>

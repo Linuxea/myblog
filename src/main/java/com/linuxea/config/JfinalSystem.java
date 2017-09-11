@@ -19,8 +19,21 @@ import com.linuxea.model._MappingKit;
  */
 public class JfinalSystem extends JFinalConfig {
 
-    static{
+    static {
         PropKit.use("sqlConfig.properties");
+    }
+
+    /**
+     * druid 插件复用
+     *
+     * @return
+     */
+    public static DruidPlugin getDruidPlugin() {
+        String url = PropKit.get("url");
+        String userName = PropKit.get("userName");
+        String password = PropKit.get("password");
+        DruidPlugin druidPlugin = new DruidPlugin(url, userName, password);
+        return druidPlugin;
     }
 
     @Override
@@ -46,7 +59,7 @@ public class JfinalSystem extends JFinalConfig {
     public void configPlugin(Plugins me) {
         DruidPlugin druidPlugin = getDruidPlugin();
         me.add(druidPlugin);
-        ActiveRecordPlugin arp=new ActiveRecordPlugin(druidPlugin);
+        ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
         arp.setShowSql(true);
         arp.setDialect(new MysqlDialect());
         _MappingKit.mapping(arp);
@@ -61,18 +74,5 @@ public class JfinalSystem extends JFinalConfig {
     @Override
     public void configHandler(Handlers me) {
 
-    }
-
-
-    /**
-     * druid 插件复用
-     * @return
-     */
-    public static DruidPlugin getDruidPlugin(){
-        String url = PropKit.get("url");
-        String userName = PropKit.get("userName");
-        String password = PropKit.get("password");
-        DruidPlugin druidPlugin = new DruidPlugin(url, userName, password);
-        return druidPlugin;
     }
 }

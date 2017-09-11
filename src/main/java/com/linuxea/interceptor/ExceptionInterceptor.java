@@ -11,9 +11,9 @@ public class ExceptionInterceptor implements Interceptor {
     @Override
     public void intercept(Invocation inv) {
 
-        try{
+        try {
             inv.invoke();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

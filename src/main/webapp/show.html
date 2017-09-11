@@ -32,8 +32,26 @@
         <button class="btn btn-success pull-right">back</button>
     </div>
 
-
 </div>
+
+
+<script>
+    $(function(){
+        var id = "123456789741256398";
+       $.ajax({
+            url:"/articleController/loadOne",
+            data:{"id",id},
+            success:function(rs){
+                console.log(rs);
+            },
+            error:function(){
+                // errro
+            }
+        });
+
+    });
+
+</script>
 
 </body>
 </html>

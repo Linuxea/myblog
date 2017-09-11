@@ -90,5 +90,25 @@
 
 </div>
 
+
+<script>
+
+    $(function(){
+
+        //加载并拼凑成html
+         $.ajax({
+                    url:"/articleController/find",
+                    success:function(rs){
+                        console.log(rs);
+                    },
+                    error:function(){
+                        // errro
+                    }
+                });
+
+    }());
+
+
+</script>
 </body>
 </html>
