@@ -8,6 +8,7 @@
     <script type="text/javascript" src="/plugin/jq.js"></script>
     <script src="/plugin/bootstrap.js"></script>
     <style type="text/css">
+
     </style>
 </head>
 <body>
@@ -19,6 +20,7 @@
 
 </div>
 
+<div class="panel-footer navbar-fixed-bottom"></div>
 
 <script>
 
@@ -31,11 +33,12 @@
                         var htmlStr = "";
                         for (let i = 0; i < rs.length; i++) {
                             htmlStr += "<div class=\"row\">";
-                            htmlStr += "<h3>" + rs[i].title + "</h3>";
-                            htmlStr += " <p class=\"lead\">" + rs[i].content + "</p>";
+                            htmlStr += "<p class=\"bg-success lead \">" + rs[i].title + "</p>";
+                            htmlStr += "<p class=\"lead\">" + rs[i].content + "</p>";
                             htmlStr += "<p>" + rs[i].create_time + "</p>";
-                            htmlStr += "<button class=\"btn btn-primary pull-right\" data-id=" + rs[i].id + ">continue</button></div>";
-                            htmlStr += "<div class=\"row\"><br/><br/></div>";
+                            htmlStr += "</div>";
+                            htmlStr += "<button class=\"btn btn-primary pull-right\" data-id=" + rs[i].id + ">continue</button>";
+                            htmlStr += "<div class=\"row\"><br/><br/><br/></div>";
                         }
 
                         $("div.container").append(htmlStr);

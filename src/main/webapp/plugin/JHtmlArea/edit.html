@@ -19,6 +19,11 @@
         
         div.jHtmlArea { border: solid 1px #ccc; }
 
+        p {
+            height: 350px;
+            word-wrap: break-word;
+        }
+
 
 
     </style>
@@ -26,7 +31,7 @@
 <body>
 
 <input type="text" id="title" placeholder="文章标题"/>
-<textarea id="txtDefaultHtmlArea" cols="100%" rows="80">
+<textarea id="txtDefaultHtmlArea" cols="100%" rows="50">
 
 <!-- content here -->
 
@@ -57,7 +62,6 @@
                         "content": $('#txtDefaultHtmlArea').htmlarea('html'),
                     },
                     success:function(rs){
-                        debugger;
                         if (rs.stateCode === "ok") {
                             alert("save ok");
                         }else{

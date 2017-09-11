@@ -11,13 +11,8 @@
     </style>
 </head>
 <body>
-<div class="container">
-
-
-
-</div>
-
-
+<div class="container"></div>
+<div class="panel-footer navbar-fixed-bottom"></div>
 <script>
     $(function(){
         var id = window.location.search.split('=')[1];
@@ -27,7 +22,7 @@
             success:function(rs){
                 var htmlStr = "";
                 htmlStr += "<div class=\"page-header\">";
-                htmlStr += "<h1>" + rs.title + "</h1>";
+                htmlStr += "<h1 class='bg-primary'>" + rs.title + "</h1>";
                 htmlStr += "</div>";
                 htmlStr += "<div>";
                 htmlStr += "<p class=\"lead\">";
@@ -38,6 +33,7 @@
                 htmlStr += " <div class=\"row\">\n" +
                     "<button class=\"btn btn-success pull-right\">back</button>\n" +
                     "</div>";
+                htmlStr += "<br/><br/><br/>";
                 $("div.container").append(htmlStr);
 
                 $("button").on("click", function () {
