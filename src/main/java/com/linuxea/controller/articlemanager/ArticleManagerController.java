@@ -61,8 +61,9 @@ public class ArticleManagerController extends BaseController {
      * 删除文章
      */
 	public void delete(@Para("") Article article) {
-		ARITICLE_MANAGER_SERVICE.delete(article);
-	}
+        boolean result = ARITICLE_MANAGER_SERVICE.delete(article);
+        renderJson(result ? "ok" : "notok");
+    }
 
     /**
      * 列出文章

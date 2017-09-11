@@ -1,6 +1,7 @@
 package com.linuxea.service.articlemanager;
 
 import com.jfinal.kit.Kv;
+import com.jfinal.plugin.activerecord.Db;
 import com.linuxea.model.Article;
 import com.linuxea.model.ArticleWithTag;
 import com.linuxea.service.tagmanager.TagManagerService;
@@ -55,6 +56,8 @@ public class AriticleManagerService {
     }
 
     public boolean delete(Article article) {
+        Db.update("delete from article_with_tag where article_id = ?", article.getId());
+        Db.update("delete from article_with_kind where article_id = ?", article.getId());
         return article.delete();
     }
 
