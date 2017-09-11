@@ -45,9 +45,9 @@ public class JfinalSystem extends JFinalConfig {
     @Override
     public void configRoute(Routes me) {
         me.add("/", IndexController.class);
-        me.add("tagController", TagManagerController.class);
-        me.add("kindController", ClassManagerController.class);
-        me.add("articleController", ArticleManagerController.class);
+        me.add("/tagController", TagManagerController.class);
+        me.add("/kindController", ClassManagerController.class);
+        me.add("/articleController", ArticleManagerController.class);
     }
 
     @Override
