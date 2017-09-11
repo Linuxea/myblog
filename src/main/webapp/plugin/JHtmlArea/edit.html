@@ -24,6 +24,22 @@
             word-wrap: break-word;
         }
 
+        .label-success {
+            background-color: #5cb85c;
+        }
+
+        .label {
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 75%;
+            font-weight: bold;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+        }
 
 
     </style>
@@ -31,6 +47,10 @@
 <body>
 
 <input type="text" id="title" placeholder="文章标题"/>
+<input type="text" id="labels" placeholder="标签"/>
+<div id="labelList">
+
+</div>
 <textarea id="txtDefaultHtmlArea" cols="100%" rows="50">
 
 <!-- content here -->
@@ -72,6 +92,15 @@
                         // errro
                     }
                 });
+            });
+
+            $('#labels').bind('keypress', function (event) {
+                if (event.keyCode == "13") {
+                    var label = $(this).val();
+                    if (label === "") return;
+                    $("#labelList").append("<span class=\"label label-success\">" + label + "</span>&nbsp;");
+                    $(this).val("");
+                }
             });
 
         });
