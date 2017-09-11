@@ -13,36 +13,36 @@
 <body>
 <div class="container">
 
-    <div class="page-header">
-        <h1>tomcat 类的加载机制是如何实现的</h1>
-    </div>
 
-    <div>
-
-        <p class="lead"
-           style="box-sizing: border-box; margin: 0px 0px 20px; font-size: 21px; line-height: 1.4; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255);">
-            Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient
-            montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-        <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">
-            2017-06-12 12:04:04</p>
-
-    </div>
-
-    <div class="row">
-        <button class="btn btn-success pull-right">back</button>
-    </div>
 
 </div>
 
 
 <script>
     $(function(){
-        var id = "123456789741256398";
+        var id = window.location.search.split('=')[1];
        $.ajax({
             url:"/articleController/loadOne",
-            data:{"id",id},
+           data: {"id": id},
             success:function(rs){
-                console.log(rs);
+                var htmlStr = "";
+                htmlStr += "<div class=\"page-header\">";
+                htmlStr += "<h1>" + rs.title + "</h1>";
+                htmlStr += "</div>";
+                htmlStr += "<div>";
+                htmlStr += "<p class=\"lead\">";
+                htmlStr += rs.content;
+                htmlStr += "</p>";
+                htmlStr += "<p>" + rs.create_time + "</p>";
+                htmlStr += " </div>";
+                htmlStr += " <div class=\"row\">\n" +
+                    "<button class=\"btn btn-success pull-right\">back</button>\n" +
+                    "</div>";
+                $("div.container").append(htmlStr);
+
+                $("button").on("click", function () {
+                    window.location.href = "/index.html";
+                })
             },
             error:function(){
                 // errro

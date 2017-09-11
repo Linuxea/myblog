@@ -4,89 +4,18 @@
     <meta charset="UTF-8">
     <title>MyBlog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="plugin/bootstrap.css">
-    <script type="text/javascript" src="plugin/jq.js"></script>
-    <script src="plugin/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/plugin/bootstrap.css">
+    <script type="text/javascript" src="/plugin/jq.js"></script>
+    <script src="/plugin/bootstrap.js"></script>
     <style type="text/css">
     </style>
 </head>
 <body>
 <div class="container">
 
-
     <div class="page-header">
         <h1>welcome to my blog</h1>
     </div>
-
-    <div class="row">
-        <h3>tomcat 类的加载机制是如何实现的</h3>
-        <p class="lead">Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis
-            parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
-        </p>
-        <p>2017-06-12 12:04:04</p>
-        <button class="btn btn-primary pull-right">continue</button>
-    </div>
-
-    <div class="row"><br/><br/></div>
-
-    <div class="row">
-        <h3>小猫咪是如何吃到鱼的</h3>
-        <p class="lead">Bing has detected that you are searching using English queries.
-            Try the international version to get richer and more accurate English search results.
-        </p>
-        <p>2017-06-12 12:04:04</p>
-        <button class="btn btn-primary pull-right">continue</button>
-    </div>
-
-    <div class="row"><br/><br/></div>
-
-    <div class="row">
-        <h3>为什么明天的太阳依然会上升起来呢</h3>
-        <p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-            ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor
-            ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-        </p>
-        <p>2017-06-12 12:04:04</p>
-        <button class="btn btn-primary pull-right">continue</button>
-    </div>
-
-    <div class="row"><br/><br/></div>
-
-    <div class="row">
-        <h3>你会放弃一切去飞吗</h3>
-        <p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-            ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor
-            ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-        </p>
-        <p>2017-06-12 12:04:04</p>
-        <button class="btn btn-primary pull-right">continue</button>
-    </div>
-
-    <div class="row"><br/><br/></div>
-
-    <div class="row">
-        <h3>JAVA是否能够拯救中国</h3>
-        <p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-            ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor
-            ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-        </p>
-        <p>2017-06-12 12:04:04</p>
-        <button class="btn btn-primary pull-right">continue</button>
-    </div>
-
-    <div class="row"><br/><br/></div>
-
-    <div class="row">
-        <h3>PYTHON是一门解释性的高级语言</h3>
-        <p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-            ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor
-            ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-        </p>
-        <p>2017-06-12 12:04:04</p>
-        <button class="btn btn-primary pull-right">continue</button>
-    </div>
-
-    <div class="row"><br/><br/></div>
 
 </div>
 
@@ -99,7 +28,20 @@
          $.ajax({
                     url:"/articleController/find",
                     success:function(rs){
-                        console.log(rs);
+                        var htmlStr = "";
+                        for (let i = 0; i < rs.length; i++) {
+                            htmlStr += "<div class=\"row\">";
+                            htmlStr += "<h3>" + rs[i].title + "</h3>";
+                            htmlStr += " <p class=\"lead\">" + rs[i].content + "</p>";
+                            htmlStr += "<p>" + rs[i].create_time + "</p>";
+                            htmlStr += "<button class=\"btn btn-primary pull-right\" data-id=" + rs[i].id + ">continue</button></div>";
+                            htmlStr += "<div class=\"row\"><br/><br/></div>";
+                        }
+
+                        $("div.container").append(htmlStr);
+                        $("button").click(function () {
+                            window.location.href = "/show.html?data-id=" + $(this).attr("data-id");
+                        });
                     },
                     error:function(){
                         // errro
