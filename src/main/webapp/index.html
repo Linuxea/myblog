@@ -8,7 +8,10 @@
     <script type="text/javascript" src="/plugin/jq.js"></script>
     <script src="/plugin/bootstrap.js"></script>
     <style type="text/css">
-
+        .row {
+            max-height: 320px;
+            overflow: auto
+        }
     </style>
 </head>
 <body>
@@ -35,8 +38,8 @@
                             htmlStr += "<div class=\"row\">";
                             htmlStr += "<p class=\"bg-success lead \">" + rs[i].title + "</p>";
                             htmlStr += "<p class=\"lead\">" + rs[i].content + "</p>";
-                            htmlStr += "<p>" + rs[i].create_time + "</p>";
                             htmlStr += "</div>";
+                            htmlStr += "<p>" + rs[i].create_time + "</p>";
                             htmlStr += "<button class=\"btn btn-primary pull-right\" data-id=" + rs[i].id + ">continue</button>";
                             htmlStr += "<div class=\"row\"><br/><br/><br/></div>";
                         }
