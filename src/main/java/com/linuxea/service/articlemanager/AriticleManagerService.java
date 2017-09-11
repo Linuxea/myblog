@@ -2,9 +2,12 @@ package com.linuxea.service.articlemanager;
 
 import com.jfinal.kit.Kv;
 import com.linuxea.model.Article;
+import com.linuxea.model.ArticleWithTag;
+import com.linuxea.service.tagmanager.TagManagerService;
 import com.linuxea.utils.IdKits;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Linuxea on 2017-09-11.
@@ -12,9 +15,11 @@ import java.util.Date;
 public class AriticleManagerService {
 
     public static final AriticleManagerService SERVICE = new AriticleManagerService();
+	public static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
 
-    public Kv add(Article article) {
-        Kv kv = Kv.create();
+	public Kv add(Article article, String labels) {
+		List<String> labelsId = TAG_MANAGER_SERVICE.checkLabels(labels);
+		Kv kv = Kv.create();
         article.setCreateTime(new Date());
         article.setId(IdKits.wantId());
         if (article.save()) {
@@ -22,11 +27,31 @@ public class AriticleManagerService {
         } else {
             kv.set("stateCode", "notok");
         }
-        return kv;
+		bindTag(labelsId, article.getId());
+		return kv;
     }
 
-    public boolean update(Article article) {
-        return article.update();
+
+	/**
+	 * 标签绑定
+	 *
+	 * @param labelsId
+	 * @param articleId
+	 */
+	private void bindTag(List<String> labelsId, String articleId) {
+		for (String temp : labelsId) {
+			String articleWithTagId = IdKits.wantId();
+			ArticleWithTag articleWithTag = new ArticleWithTag();
+			articleWithTag.setId(articleWithTagId);
+			articleWithTag.setTagId(temp);
+			articleWithTag.setArticleId(articleId);
+			articleWithTag.save();
+		}
+	}
+
+
+	public boolean update(Article article) {
+		return article.update();
     }
 
     public boolean delete(Article article) {

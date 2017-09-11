@@ -35,8 +35,9 @@ public class ArticleManagerController extends BaseController {
     /**
      * 新增文章
      */
-	public void add(@Para("") Article article) {
-		Kv kv = ARITICLE_MANAGER_SERVICE.add(article);
+	public void add(Article article) {
+		String labels = getPara("labels");
+		Kv kv = ARITICLE_MANAGER_SERVICE.add(article, labels);
 		renderJson(kv);
     }
 

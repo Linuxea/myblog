@@ -73,13 +73,20 @@
 
             // jq 版本问题
             $("#save").click(function(){
+                debugger;
+                var arr = [];
+                var labelList = $("#labelList").find("span");
+                for (let i = 0; i < labelList.length; i++) {
+                    arr.push(labelList[i].innerText);
+                }
                 $.ajax({
                     url:"/articleController/add",
                     type:"post",
                     dataType: "json",
                     data:{
-                        "title": $("#title").val(),
-                        "content": $('#txtDefaultHtmlArea').htmlarea('html'),
+                        "article.title": $("#title").val(),
+                        "article.content": $('#txtDefaultHtmlArea').htmlarea('html'),
+                        "labels": arr.toString(),
                     },
                     success:function(rs){
                         if (rs.stateCode === "ok") {
