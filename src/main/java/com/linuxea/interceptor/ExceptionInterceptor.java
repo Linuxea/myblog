@@ -3,6 +3,7 @@ package com.linuxea.interceptor;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import com.linuxea.exception.BlogException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,17 +19,30 @@ public class ExceptionInterceptor implements Interceptor {
 
         try {
             inv.invoke();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            StringBuilder sb = new StringBuilder("\n---Exception Log Begin---\n");
-            sb.append("Controller:").append(inv.getController().getClass().getName()).append("\n");
-            sb.append("Method:").append(inv.getMethodName()).append("\n");
-            sb.append("Exception Type:").append(e.getClass().getName()).append("\n");
-            sb.append("Exception Details:");
-            logger.error(sb.toString(), e);
-
+        } catch (BlogException blogException) {
+            blogException.printStackTrace();
+            doLog(inv, blogException);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            doLog(inv, exception);
+        } finally {
+            //Do nothing
         }
 
+    }
+
+    /**
+     * 异常记录
+     *
+     * @param invocation
+     * @param e
+     */
+    private void doLog(Invocation invocation, Exception e) {
+        StringBuilder sb = new StringBuilder("\n---Exception Log Begin---\n");
+        sb.append("Controller:").append(invocation.getController().getClass().getName()).append("\n");
+        sb.append("Method:").append(invocation.getMethodName()).append("\n");
+        sb.append("Exception Type:").append(e.getClass().getName()).append("\n");
+        sb.append("Exception Details:");
+        logger.error(sb.toString(), e);
     }
 }
