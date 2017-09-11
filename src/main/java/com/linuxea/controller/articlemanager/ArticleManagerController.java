@@ -59,8 +59,8 @@ public class ArticleManagerController extends BaseController {
      */
     public void find() {
         //Article.dao.paginate(0, 10, new SqlPara());
-        List<Article> articleList = Article.dao.find("select * from article");
-        renderJson(articleList);
+		List<Article> articleList = Article.dao.find("select * from article order by create_time desc");
+		renderJson(articleList);
     }
 
 }
