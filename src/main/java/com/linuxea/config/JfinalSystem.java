@@ -1,6 +1,7 @@
 package com.linuxea.config;
 
 import com.jfinal.config.*;
+import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
@@ -73,8 +74,11 @@ public class JfinalSystem extends JFinalConfig {
 		me.add(new ExceptionInterceptor());
     }
 
+	public static void main(String[] args) {
+		JFinal.start("src/main/webapp", 80, "/");
+	}
+
     @Override
     public void configHandler(Handlers me) {
-
     }
 }
