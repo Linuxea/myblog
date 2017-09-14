@@ -71,11 +71,15 @@
                            url: "/articleController/delete",
                            data: {"id": id},
                            type: "post",
-                           success: function (rs) {
-                               if (rs === "ok") {
+                           dataType: "json",
+                           success: function (result) {
+                               if (result.rs === "ok") {
                                    alert("delete ok!");
                                    window.location.href = "index.html";
                                }
+                           },
+                           error: function () {
+                               alert("why error");
                            }
                        })
                    }

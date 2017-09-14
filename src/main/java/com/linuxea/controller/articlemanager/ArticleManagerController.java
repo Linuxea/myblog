@@ -33,9 +33,12 @@ public class ArticleManagerController extends BaseController {
      * 加载一条详情
      */
     public void loadOne() {
-        Article article = ARITICLE_MANAGER_SERVICE.loadOne(getPara("id"));
-		List<Record> records = TAG_MANAGER_SERVICE.getTagNamesByArticleName(article);
 		Map<String, Object> dataMap = Maps.newHashMap();
+		Article article = ARITICLE_MANAGER_SERVICE.loadOne(getPara("id"));
+		if (article == null) {
+			return;// 找不到此文章了
+		}
+		List<Record> records = TAG_MANAGER_SERVICE.getTagNamesByArticleName(article);
 		dataMap.put("article", article);
 		dataMap.put("tagNames", records);
 		renderJson(dataMap);
@@ -62,8 +65,9 @@ public class ArticleManagerController extends BaseController {
      */
 	public void delete(@Para("") Article article) {
         boolean result = ARITICLE_MANAGER_SERVICE.delete(article);
-        renderJson(result ? "ok" : "notok");
-    }
+		String okOrNot = result ? "ok" : "notok";
+		renderJson("rs", okOrNot);
+	}
 
     /**
      * 列出文章
