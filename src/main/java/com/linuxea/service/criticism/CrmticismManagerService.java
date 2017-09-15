@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.jfinal.plugin.activerecord.Model;
 import com.linuxea.utils.IdKits;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,6 +32,17 @@ public class CrmticismManagerService {
 		return map;
 	}
 
+	/**
+	 * 查找某文章的所有评论
+	 *
+	 * @param articleId
+	 */
+	public List<ArticleWithMessage> find(String articleId) {
+		String sql = "select * from xxx where articleId = ? order by create_time desc;";
+		List<ArticleWithMessage> articleWithMessageList
+				= ArticleWithMessage.dao.find(sql, articleId);
+		return articleWithMessageList;
+	}
 }
 
 /**
@@ -41,6 +53,8 @@ class ArticleWithMessage extends Model<ArticleWithMessage> {
 	private String id;
 	private String articleId;
 	private String message;
+
+	public static final ArticleWithMessage dao = new ArticleWithMessage().dao();
 
 	public String getId() {
 		return id;
