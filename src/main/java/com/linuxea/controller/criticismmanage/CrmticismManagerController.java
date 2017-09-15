@@ -36,7 +36,8 @@ public class CrmticismManagerController extends BaseController {
 	/**
 	 * 评论不删除
 	 */
-	public void delete() {
+	public void delete() throws IllegalAccessException {
+		throw new IllegalAccessException("评论不支持删除");
 	}
 
 }
