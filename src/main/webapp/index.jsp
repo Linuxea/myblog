@@ -55,7 +55,7 @@
 
                 $("div.container").append(htmlStr);
                 $("button").click(function () {
-                    window.location.href = "<%=request.getContextPath() %>/show.html?data-id=" + $(this).attr("data-id");
+                    window.location.href = "<%=request.getContextPath() %>/show.jsp?data-id=" + $(this).attr("data-id");
                 });
             },
             error: function () {

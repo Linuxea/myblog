@@ -41,7 +41,7 @@
     $(function () {
         var id = window.location.search.split('=')[1];
         $.ajax({
-            url: "/articleController/loadOne",
+            url: "<%=request.getContextPath() %>/articleController/loadOne",
             data: {"id": id},
             success: function (result) {
                 var article = result.article;
@@ -63,15 +63,15 @@
                 htmlStr += "<p>" + article.create_time + "</p>";
                 htmlStr += " </div>";
                 htmlStr += " <div class=\"row\">\n" +
-                    "<button class=\"btn btn-danger pull-right delete\">delete</button>" +
+                    //                    "<button class=\"btn btn-danger pull-right delete\">delete</button>" +
                     "<button class=\"btn btn-success pull-right back\">back</button>" +
-                    "<button class=\"btn btn-success pull-right criticism\">criticism</button>" +
+                    //                    "<button class=\"btn btn-success pull-right criticism\">criticism</button>" +
                     "</div>";
                 htmlStr += "<br/><br/><br/>";
                 $("div.container").append(htmlStr);
 
                 $("button.back").on("click", function () {
-                    window.location.href = "<%=request.getContextPath() %>/index.html";
+                    window.location.href = "<%=request.getContextPath() %>/index.jsp";
                 });
 
                 $("button.delete").on("click", function () {
@@ -84,7 +84,7 @@
                             success: function (result) {
                                 if (result.rs === "ok") {
                                     alert("delete ok!");
-                                    window.location.href = "<%=request.getContextPath() %>index.html";
+                                    window.location.href = "<%=request.getContextPath() %>index.jsp";
                                 }
                             },
                             error: function () {
