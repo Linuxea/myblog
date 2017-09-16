@@ -40,7 +40,7 @@
 
         //加载并拼凑成html
         $.ajax({
-            url: "/articleController/find",
+            url: "<%=request.getContextPath() %>/articleController/find",
             success: function (rs) {
                 var htmlStr = "";
                 for (let i = 0; i < rs.length; i++) {
