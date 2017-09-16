@@ -8,7 +8,14 @@ import com.linuxea.controller.base.BaseController;
 public class IndexController extends BaseController {
 
     public void index() {
-	}
+        renderJsp("/index.jsp");
+    }
+
+    public void create() {
+        super.renderJsp("/plugin/JHtmlArea/edit.jsp");
+    }
+
+
 
 
 }

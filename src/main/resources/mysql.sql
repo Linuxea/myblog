@@ -5,8 +5,9 @@ create table kind(
 	id varchar(36) not null,
 	name varchar(50) not null,
 	create_time datetime,
-	primary key;(id)
-);
+	primary key(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE `article` (
    `id` varchar(36) NOT NULL,
@@ -14,14 +15,14 @@ CREATE TABLE `article` (
    `content` longtext,
    `create_time` datetime DEFAULT NULL,
    PRIMARY KEY (`id`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table tag(
 	id varchar(36) not null,
 	name varchar(50) not null,
 	create_time datetime,
 	primary key(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 create table article_with_kind(
@@ -29,11 +30,11 @@ create table article_with_kind(
 	article_id  varchar(36) not null,
 	kind_id  varchar(36) not null,
 	primary key(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table article_with_tag(
 	id varchar(36) not null,
 	article_id  varchar(36) not null,
 	tag_id  varchar(36) not null,
 	primary key(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
