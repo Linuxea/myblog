@@ -90,7 +90,7 @@
                    //弹出个框框
                    $.ajax({
                        url: "/articleController/criticism",
-                       data: {"title", "temp_title", "message", "temp_message"},
+                       data: {"title": "temp_title", "message": "temp_message"},
                        type: "post",
                        success: function (rs) {
                            if (rs.state === "ok") {
