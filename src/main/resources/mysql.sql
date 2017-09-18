@@ -60,3 +60,12 @@ CREATE TABLE login_list (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
+CREATE TABLE black_list (
+  id     VARCHAR(36)  NOT NULL,
+  ip     VARCHAR(36)  NOT NULL,
+  remark VARCHAR(500) NULL DEFAULT '该ip列为黑名单',
+  PRIMARY KEY (id)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;

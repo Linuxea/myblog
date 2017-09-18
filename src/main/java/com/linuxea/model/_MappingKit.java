@@ -19,6 +19,7 @@ public class _MappingKit {
 		arp.addMapping("article", "id", Article.class);
 		arp.addMapping("article_with_kind", "id", ArticleWithKind.class);
 		arp.addMapping("article_with_tag", "id", ArticleWithTag.class);
+		arp.addMapping("black_list", "id", BlackList.class);
 		arp.addMapping("kind", "id", Kind.class);
 		arp.addMapping("login_list", "id", LoginList.class);
 		arp.addMapping("tag", "id", Tag.class);

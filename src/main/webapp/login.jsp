@@ -25,7 +25,7 @@
     </div>
 
     <div class="table-responsive">
-        ${msg}
+
         <form action="/loginController/login" method="post">
 
             <table class="table table-striped table-bordered table-hover">
@@ -43,6 +43,11 @@
                 <tr>
                     <td class="success">操作</td>
                     <td><input type="submit" class="form-control" value="登录"/></td>
+                </tr>
+
+                <tr>
+                    <td class="warning">提示</td>
+                    <td><input type="text" class="form-control" value="${msg}" readonly/></td>
                 </tr>
 
             </table>
