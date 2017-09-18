@@ -12,7 +12,7 @@ public class IndexController extends BaseController {
     }
 
     public void create() {
-		if (super.getCookie("isLogin") == null) {
+		if (getSessionAttr("isLogin") == null) {
 			super.renderJsp("/login.jsp");
 		} else {
 			super.renderJsp("/plugin/JHtmlArea/edit.jsp");

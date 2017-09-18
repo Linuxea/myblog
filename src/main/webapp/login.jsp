@@ -26,7 +26,7 @@
 
     <div class="table-responsive">
 
-        <form action="/loginController/login" type="post">
+        <form action="/loginController/login" method="post">
 
             <table class="table table-striped table-bordered table-hover">
 

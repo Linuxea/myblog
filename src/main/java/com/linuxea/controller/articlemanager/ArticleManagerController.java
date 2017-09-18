@@ -47,7 +47,7 @@ public class ArticleManagerController extends BaseController {
 		dataMap.put("article", article);
 		dataMap.put("tagNames", records);
 
-		if (super.getCookie("isLogin") != null) {
+		if (getSessionAttr("isLogin") != null) {
 			dataMap.put("enableDelete", true);
 		} else {
 			dataMap.put("enableDelete", false);
@@ -60,7 +60,7 @@ public class ArticleManagerController extends BaseController {
      * 新增文章
      */
 	public void add() {
-		if (super.getCookie("isLogin") == null) {
+		if (super.getSessionAttr("isLogin") == null) {
 			LOGGER.warn("请勿跳过登录步骤");
 			return;
 		}
@@ -74,7 +74,7 @@ public class ArticleManagerController extends BaseController {
      * 更新文章
      */
     public void update() {
-		if (getCookie("isLogin") == null) {
+		if (getSessionAttr("isLogin") == null) {
 			LOGGER.error("非登录者不能更新!");
 			return;
 		}
@@ -85,7 +85,7 @@ public class ArticleManagerController extends BaseController {
      * 删除文章
      */
 	public void delete(@Para("") Article article) {
-		if (getCookie("isLogin") == null) {
+		if (getSessionAttr("isLogin") == null) {
 			LOGGER.error("非登录者不能删除!");
 			return;
 		}

@@ -25,7 +25,7 @@ public class LoginController extends BaseController {
 		User user = getModel(User.class);
 		boolean ok = LoginService.LOGIN_SERVICE.login(user);
 		if (ok) {
-			super.setCookie("isLogin", "ok", 24 * 60 * 60); //有效期为一天
+			super.setSessionAttr("isLogin", true);
 			renderJsp("/plugin/JHtmlArea/edit.jsp");
 		} else {
 			setAttr("msg", "用户名或者密码有误");
