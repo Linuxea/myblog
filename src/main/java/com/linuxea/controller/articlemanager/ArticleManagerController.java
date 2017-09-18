@@ -8,6 +8,8 @@ import com.linuxea.controller.base.BaseController;
 import com.linuxea.model.Article;
 import com.linuxea.service.articlemanager.AriticleManagerService;
 import com.linuxea.service.tagmanager.TagManagerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +20,8 @@ import java.util.Map;
  */
 public class ArticleManagerController extends BaseController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleManagerController.class);
+
     private static final AriticleManagerService ARITICLE_MANAGER_SERVICE = AriticleManagerService.SERVICE;
 	private static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
 
@@ -25,7 +29,7 @@ public class ArticleManagerController extends BaseController {
      * 主页跳转
      */
     public void index() {
-		super.renderJsp("/plugin/JHtmlArea/edit.html");
+		super.renderJsp("/plugin/JHtmlArea/edit.jsp");
 	}
 
 
@@ -36,6 +40,7 @@ public class ArticleManagerController extends BaseController {
 		Map<String, Object> dataMap = Maps.newHashMap();
 		Article article = ARITICLE_MANAGER_SERVICE.loadOne(getPara("id"));
 		if (article == null) {
+			LOGGER.warn("id 为:" + getPara("id") + "的文章不存在的");
 			return;// 找不到此文章了
 		}
 		List<Record> records = TAG_MANAGER_SERVICE.getTagNamesByArticleName(article);
@@ -48,6 +53,10 @@ public class ArticleManagerController extends BaseController {
      * 新增文章
      */
 	public void add() {
+		if (super.getCookie("isLogin") == null) {
+			LOGGER.warn("请勿跳过登录步骤");
+			return;
+		}
 		Article article = getModel(Article.class);
 		String labels = getPara("labels");
 		Kv kv = ARITICLE_MANAGER_SERVICE.add(article, labels);
