@@ -11,6 +11,7 @@ import com.jfinal.template.Engine;
 import com.linuxea.controller.articlemanager.ArticleManagerController;
 import com.linuxea.controller.classmanager.ClassManagerController;
 import com.linuxea.controller.index.IndexController;
+import com.linuxea.controller.loginmanager.LoginController;
 import com.linuxea.controller.tagmanager.TagManagerController;
 import com.linuxea.interceptor.ExceptionInterceptor;
 import com.linuxea.model._MappingKit;
@@ -55,7 +56,8 @@ public class JfinalSystem extends JFinalConfig {
         me.add("/tagController", TagManagerController.class);
         me.add("/kindController", ClassManagerController.class);
         me.add("/articleController", ArticleManagerController.class);
-    }
+		me.add("/loginController", LoginController.class);
+	}
 
     @Override
     public void configEngine(Engine me) {
