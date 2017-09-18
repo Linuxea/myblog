@@ -29,7 +29,7 @@ public class LoginController extends BaseController {
 			LOGGER.info(user.getUserName() + "登录成功,ip为;" + super.getRequest().getRemoteAddr());
 			renderJsp("/plugin/JHtmlArea/edit.jsp");
 		} else {
-			setAttr("msg", "用户名或者密码有误");
+			setAttr("msg", "<p class=\"text-error\">用户名或者密码有误</p>");
 			renderJsp("/login.jsp");
 			LOGGER.error("ip:" + super.getRequest().getRemoteAddr() + "登录失败");
 		}

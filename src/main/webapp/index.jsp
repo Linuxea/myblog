@@ -17,7 +17,7 @@
     <script src="<%=request.getContextPath() %>/plugin/bootstrap.js"></script>
     <style type="text/css">
         .row {
-            max-height: 320px;
+            max-height: 120px;
             overflow: hidden;
         }
 
