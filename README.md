@@ -5,3 +5,5 @@
 效果图：
 
 ![](src/main/resources/cover.png)
+
+<blockquote>ou can do what you want to do   -- 鲁迅</blockquote>
