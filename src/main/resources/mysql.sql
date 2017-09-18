@@ -51,3 +51,12 @@ CREATE TABLE user (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+CREATE TABLE login_list (
+  id            VARCHAR(36) NOT NULL,
+  ip            VARCHAR(36) NOT NULL,
+  success_count INT         NOT NULL DEFAULT 0,
+  fail_count    INT         NOT NULL DEFAULT 0,
+  PRIMARY KEY (id)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;

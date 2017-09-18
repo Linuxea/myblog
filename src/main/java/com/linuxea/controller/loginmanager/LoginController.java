@@ -3,6 +3,7 @@ package com.linuxea.controller.loginmanager;
 import com.linuxea.controller.base.BaseController;
 import com.linuxea.model.User;
 import com.linuxea.service.loginmanager.LoginService;
+import com.linuxea.utils.LoginCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,11 +27,13 @@ public class LoginController extends BaseController {
 		boolean ok = LoginService.LOGIN_SERVICE.login(user);
 		if (ok) {
 			super.setSessionAttr("isLogin", true);
+			LoginCountUtil.countSuccess(getRequest().getRemoteAddr(), true);
 			LOGGER.info(user.getUserName() + "登录成功,ip为;" + super.getRequest().getRemoteAddr());
 			forwardAction("/articleController/index"); //跳转到文章创建页面
 		} else {
 			setAttr("msg", "<p class=\"text-error\">用户名或者密码有误</p>");
 			renderJsp("/login.jsp");
+			LoginCountUtil.countSuccess(getRequest().getRemoteAddr(), false);
 			LOGGER.error("ip:" + super.getRequest().getRemoteAddr() + "登录失败");
 		}
 	}
