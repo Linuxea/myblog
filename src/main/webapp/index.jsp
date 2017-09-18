@@ -49,7 +49,7 @@
                     htmlStr += "<p class=\"lead\">" + rs[i].content + "</p>";
                     htmlStr += "</div>";
                     htmlStr += "<p>" + rs[i].create_time + "</p>";
-                    htmlStr += "<button class=\"btn btn-primary pull-right \" data-id=" + rs[i].id + ">continue</button>";
+                    htmlStr += "<button class=\"btn btn-primary pull-right \" data-id=" + rs[i].id + ">详情</button>";
                     htmlStr += "<div class=\"row\" style='border-top: 1px solid black;' ><br/><br/><br/></div>";
                 }
 

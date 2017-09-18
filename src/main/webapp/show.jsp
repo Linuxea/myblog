@@ -65,9 +65,9 @@
                 htmlStr += " <div class=\"row\">\n";
                 if (result.enableDelete) {
                     //可删除状态
-                    htmlStr += "<button class=\"btn btn-danger pull-right delete\">delete</button>";
+                    htmlStr += "<button class=\"btn btn-danger pull-right delete\">删除</button>";
                 }
-                htmlStr += "<button class=\"btn btn-success pull-right back\">back</button>" +
+                htmlStr += "<button class=\"btn btn-success pull-right back\">返回</button>" +
                     //                    "<button class=\"btn btn-success pull-right criticism\">criticism</button>" +
                     "</div>";
                 htmlStr += "<br/><br/><br/>";
