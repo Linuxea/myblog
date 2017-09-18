@@ -39,9 +39,14 @@ public class JfinalSystem extends JFinalConfig {
 
     @Override
     public void configConstant(Constants me) {
-        me.setDevMode(true);
+//        me.setDevMode(true);
         me.setViewType(ViewType.JSP);
-//        me.setError404View("404.html");
+        me.setError404View("404.html");
+        me.setError401View("404.html");
+        me.setError403View("404.html");
+        me.setError500View("404.html");
+        me.setError500View("404.html");
+
 	}
 
     @Override
@@ -62,7 +67,7 @@ public class JfinalSystem extends JFinalConfig {
         DruidPlugin druidPlugin = getDruidPlugin();
         me.add(druidPlugin);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
-        arp.setShowSql(true);
+//        arp.setShowSql(true);
         arp.setDialect(new MysqlDialect());
         _MappingKit.mapping(arp);
         me.add(arp);
@@ -75,8 +80,8 @@ public class JfinalSystem extends JFinalConfig {
     }
 
 	public static void main(String[] args) {
-		JFinal.start("src/main/webapp", 80, "/");
-	}
+        JFinal.start("src/main/webapp", 8080, "/");
+    }
 
     @Override
     public void configHandler(Handlers me) {
