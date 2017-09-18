@@ -15,6 +15,7 @@ import com.linuxea.controller.loginmanager.LoginController;
 import com.linuxea.controller.tagmanager.TagManagerController;
 import com.linuxea.interceptor.ExceptionInterceptor;
 import com.linuxea.model._MappingKit;
+import com.linuxea.plugins.CronPlugin;
 
 /**
  * Created by Linuxea on 2017-09-10.
@@ -77,6 +78,9 @@ public class JfinalSystem extends BaseConfig {
 		arp.setDialect(new MysqlDialect());
 		_MappingKit.mapping(arp);
 		me.add(arp);
+
+		//定时任务
+		me.add(new CronPlugin());
 	}
 
 	@Override
