@@ -46,6 +46,13 @@ public class ArticleManagerController extends BaseController {
 		List<Record> records = TAG_MANAGER_SERVICE.getTagNamesByArticleName(article);
 		dataMap.put("article", article);
 		dataMap.put("tagNames", records);
+
+		if (super.getCookie("isLogin") != null) {
+			dataMap.put("enableDelete", true);
+		} else {
+			dataMap.put("enableDelete", false);
+		}
+
 		renderJson(dataMap);
 	}
 
@@ -74,7 +81,11 @@ public class ArticleManagerController extends BaseController {
      * 删除文章
      */
 	public void delete(@Para("") Article article) {
-        boolean result = ARITICLE_MANAGER_SERVICE.delete(article);
+		if (getCookie("isLogin") == null) {
+			LOGGER.error("非登录者不能删除!");
+			return;
+		}
+		boolean result = ARITICLE_MANAGER_SERVICE.delete(article);
 		String okOrNot = result ? "ok" : "notok";
 		renderJson("rs", okOrNot);
 	}
@@ -84,7 +95,9 @@ public class ArticleManagerController extends BaseController {
      */
     public void find() {
         //Article.dao.paginate(0, 10, new SqlPara());
-		List<Article> articleList = Article.dao.find("select * from article order by create_time desc");
+		List<Article> articleList =
+				Article.dao.find("select * from article where status = 1 order by create_time desc");
+		// 状态为1表示正常状态
 		renderJson(articleList);
     }
 

@@ -62,9 +62,12 @@
                 htmlStr += "</p>";
                 htmlStr += "<p>" + article.create_time + "</p>";
                 htmlStr += " </div>";
-                htmlStr += " <div class=\"row\">\n" +
-                    //                    "<button class=\"btn btn-danger pull-right delete\">delete</button>" +
-                    "<button class=\"btn btn-success pull-right back\">back</button>" +
+                htmlStr += " <div class=\"row\">\n";
+                if (result.enableDelete) {
+                    //可删除状态
+                    htmlStr += "<button class=\"btn btn-danger pull-right delete\">delete</button>";
+                }
+                htmlStr += "<button class=\"btn btn-success pull-right back\">back</button>" +
                     //                    "<button class=\"btn btn-success pull-right criticism\">criticism</button>" +
                     "</div>";
                 htmlStr += "<br/><br/><br/>";
