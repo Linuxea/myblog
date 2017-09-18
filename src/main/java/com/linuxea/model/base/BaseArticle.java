@@ -41,11 +41,11 @@ public abstract class BaseArticle<M extends BaseArticle<M>> extends Model<M> imp
 		return get("create_time");
 	}
 
-	public Integer getStatus() {
-		return get("status");
+	public java.lang.Integer getStatus() {
+		return getInt("status");
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(java.lang.Integer status) {
 		set("status", status);
 	}
 

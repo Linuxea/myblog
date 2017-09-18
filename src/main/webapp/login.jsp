@@ -21,7 +21,7 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>table</h1>
+        <h1>登录</h1>
     </div>
 
     <div class="table-responsive">
@@ -36,8 +36,13 @@
                 </tr>
 
                 <tr>
-                    <td> class="info"密码</td>
+                    <td class="info">密码</td>
                     <td><input type="text" class="form-control" name="user.password"/></td>
+                </tr>
+
+                <tr>
+                    <td class="success">操作</td>
+                    <td><input type="submit" class="form-control" value="登录"/></td>
                 </tr>
 
             </table>

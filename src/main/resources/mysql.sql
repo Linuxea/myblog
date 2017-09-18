@@ -2,10 +2,10 @@ create database myblog;
 use myblog;
 
 create table kind(
-	id varchar(36) not null,
-	name varchar(50) not null,
-	create_time datetime,
-	primary key(id)
+  id          VARCHAR(36) NOT NULL,
+  name        VARCHAR(50) NOT NULL,
+  create_time DATETIME,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -15,27 +15,39 @@ CREATE TABLE `article` (
   `content`     longtext,
   `create_time` datetime DEFAULT NULL,
   `status`      TINYINT  DEFAULT 1,
-   PRIMARY KEY (`id`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 create table tag(
-	id varchar(36) not null,
-	name varchar(50) not null,
-	create_time datetime,
-	primary key(id)
+  id          VARCHAR(36) NOT NULL,
+  name        VARCHAR(50) NOT NULL,
+  create_time DATETIME,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 create table article_with_kind(
-	id varchar(36) not null,
-	article_id  varchar(36) not null,
-	kind_id  varchar(36) not null,
-	primary key(id)
+  id         VARCHAR(36) NOT NULL,
+  article_id VARCHAR(36) NOT NULL,
+  kind_id    VARCHAR(36) NOT NULL,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table article_with_tag(
-	id varchar(36) not null,
-	article_id  varchar(36) not null,
-	tag_id  varchar(36) not null,
-	primary key(id)
+  id         VARCHAR(36) NOT NULL,
+  article_id VARCHAR(36) NOT NULL,
+  tag_id     VARCHAR(36) NOT NULL,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE user (
+  id            VARCHAR(36) NOT NULL,
+  user_name     VARCHAR(36) NOT NULL,
+  user_password VARCHAR(36) NOT NULL,
+  PRIMARY KEY (id)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
