@@ -19,7 +19,7 @@ import com.linuxea.model._MappingKit;
 /**
  * Created by Linuxea on 2017-09-10.
  */
-public class JfinalSystem extends JFinalConfig {
+public class JfinalSystem extends BaseConfig {
 
 	static {
 		PropKit.use("sqlConfig.properties");
