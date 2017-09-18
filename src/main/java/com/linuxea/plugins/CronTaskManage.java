@@ -13,35 +13,29 @@ import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 
-/*
+/**
  *@date      2017年3月1日 上午10:40:14
- *@desc      class description
+ *@desc 定时任务的管理实现类
  *@version   1.0
  *@author    linuxea
- */
-
-/**
- * @param <T>
- * @author linuxea.lin
- * @desc 定时任务的管理实现类
  */
 public class CronTaskManage implements ICronManage {
 
 	private static final Logger log = LoggerFactory.getLogger(CronTaskManage.class);
 
 	private SchedulerFactory sf = null;
-	private Scheduler sched = null;
+	private Scheduler scheduler = null;
 
 
 	@Override
-	public void addJob(String cronTime, Job jobclazz) {
-		Task task = new Task(cronTime, jobclazz);
+	public void addJob(String cronTime, Job job) {
+		Task task = new Task(cronTime, job);
 		jobLists.add(task);
 	}
 
 	@Override
-	public void addJob(String taskName, String cronTime, Job jobclazz) {
-		Task task = new Task(taskName, cronTime, jobclazz);
+	public void addJob(String taskName, String cronTime, Job job) {
+		Task task = new Task(taskName, cronTime, job);
 		jobLists.add(task);
 	}
 
@@ -53,24 +47,13 @@ public class CronTaskManage implements ICronManage {
 
 	@Override
 	public void startListJob() {
-//			Date runTime  = null;
-		//log.info("------- Initializing ----------------------");
-		// First we must get a reference to a scheduler
 		sf = new StdSchedulerFactory();
 		try {
-			sched = sf.getScheduler();
-			// computer a time that is on the next round minute
-//			    runTime = evenMinuteDate(new Date());
-
-			// log.info("------- Scheduling Job  -------------------");
-			// define the job and tie it to our HelloJob class
+			scheduler = sf.getScheduler();
 		} catch (SchedulerException e1) {
 			e1.printStackTrace();
 			log.error("scheduler init error:" + e1.getMessage());
 		}
-		//  log.info("------- Initialization Complete -----------");
-
-
 		for (int i = 0; i < jobLists.size(); i++) {
 			Task currentTask = jobLists.get(i);
 			Job job = currentTask.getJob();
@@ -86,27 +69,25 @@ public class CronTaskManage implements ICronManage {
 							.build();
 
 			try {
-				sched.scheduleJob(jobDetail, trigger);
+				scheduler.scheduleJob(jobDetail, trigger);
 			} catch (SchedulerException e1) {
 				e1.printStackTrace();
 				log.error("job scheduleJob error:" + e1.getMessage());
 			}
-			//    log.info(jobDetail.getKey() + " will run at: " + runTime);
 		}
 
 		try {
-			sched.start();
+			scheduler.start();
 		} catch (SchedulerException e1) {
 			e1.printStackTrace();
 			log.error("schedule start error" + e1.getMessage());
 		}
-		//    log.info("------- Started Scheduler -----------------");
 	}
 
 	@Override
 	public void stop() {
 		try {
-			sched.clear();
+			scheduler.clear();
 		} catch (SchedulerException e) {
 			e.printStackTrace();
 		}

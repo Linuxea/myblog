@@ -3,16 +3,11 @@ package com.linuxea.plugins;
 import com.jfinal.plugin.IPlugin;
 import org.quartz.Job;
 
-/*
+/**
  *@date      2017年3月1日 上午10:50:49
- *@desc      class description
+ *@desc 定时任务插件
  *@version   1.0
  *@author    linuxea
- */
-
-/**
- * @author linuxea.lin
- * @desc 定时任务插件
  */
 public class CronPlugin implements IPlugin {
 

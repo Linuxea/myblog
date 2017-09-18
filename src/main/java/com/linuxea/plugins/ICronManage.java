@@ -23,9 +23,9 @@ public interface ICronManage {
 
 	void startListJob();
 
-	void addJob(String cronTime, Job jobclazz);
+	void addJob(String cronTime, Job job);
 
-	void addJob(String taskName, String cronTime, Job jobclazz);
+	void addJob(String taskName, String cronTime, Job job);
 
 	void scanPros();
 
