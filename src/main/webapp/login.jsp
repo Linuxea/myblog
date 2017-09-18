@@ -25,7 +25,7 @@
     </div>
 
     <div class="table-responsive">
-
+        ${msg}
         <form action="/loginController/login" method="post">
 
             <table class="table table-striped table-bordered table-hover">

@@ -26,6 +26,7 @@ public class LoginController extends BaseController {
 		boolean ok = LoginService.LOGIN_SERVICE.login(user);
 		if (ok) {
 			super.setSessionAttr("isLogin", true);
+			LOGGER.info(user.getUserName() + "登录成功,ip为;" + super.getRequest().getRemoteAddr());
 			renderJsp("/plugin/JHtmlArea/edit.jsp");
 		} else {
 			setAttr("msg", "用户名或者密码有误");

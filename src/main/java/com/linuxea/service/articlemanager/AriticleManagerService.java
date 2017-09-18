@@ -5,6 +5,8 @@ import com.linuxea.model.Article;
 import com.linuxea.model.ArticleWithTag;
 import com.linuxea.service.tagmanager.TagManagerService;
 import com.linuxea.utils.IdKits;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
  * Created by Linuxea on 2017-09-11.
  */
 public class AriticleManagerService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(AriticleManagerService.class);
 
     public static final AriticleManagerService SERVICE = new AriticleManagerService();
 	public static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
@@ -56,7 +60,11 @@ public class AriticleManagerService {
 
     public boolean delete(Article article) {
 		article.setStatus(0);
-		return article.update();
+		boolean ok = article.update();
+		if (ok) {
+			LOGGER.info("删除了id为:" + article.getId() + " 的文章");
+		}
+		return ok;
 	}
 
     /**
