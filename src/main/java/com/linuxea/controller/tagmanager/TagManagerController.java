@@ -32,4 +32,11 @@ public class TagManagerController extends BaseController {
 
     }
 
+	/**
+	 * 按照标签进行分组
+	 */
+	public void group() {
+		TagManagerService.group();
+	}
+
 }

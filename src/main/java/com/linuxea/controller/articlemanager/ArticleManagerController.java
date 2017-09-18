@@ -74,7 +74,11 @@ public class ArticleManagerController extends BaseController {
      * 更新文章
      */
     public void update() {
-        ARITICLE_MANAGER_SERVICE.update(getModel(Article.class));
+		if (getCookie("isLogin") == null) {
+			LOGGER.error("非登录者不能更新!");
+			return;
+		}
+		ARITICLE_MANAGER_SERVICE.update(getModel(Article.class));
     }
 
     /**

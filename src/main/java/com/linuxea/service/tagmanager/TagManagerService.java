@@ -8,6 +8,8 @@ import com.linuxea.model.Tag;
 import com.linuxea.utils.IdKits;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by Linuxea on 2017-09-11.
@@ -74,5 +76,24 @@ public class TagManagerService {
 				"where article.id = ?";
 		List<Record> tagNameList = Db.find(sql, article.getId());
 		return tagNameList;
+	}
+
+	/**
+	 * 按照标签进行分组
+	 */
+	public static Map<String, List<Record>> group() {
+
+		String sql = "select tag.id as tag_id, tag.name as tag_name," +
+				" article.id as article_id," +
+				" article.title as article_title ," +
+				" article.create_time as article_create_time " +
+				" from tag left join article_with_tag " +
+				" on tag.id = article_with_tag.tag_id " +
+				" left join article " +
+				" on article.id = article_with_tag.article_id" +
+				" where article.status = 1 ";
+		List<Record> list = Db.find(sql);
+		return list.stream().collect(Collectors.groupingBy(r -> r.getStr("tag_name")));
+
 	}
 }
