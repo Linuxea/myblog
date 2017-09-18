@@ -42,8 +42,8 @@
         $.ajax({
             url: "<%=request.getContextPath() %>/articleController/find",
             success: function (rs) {
-                var htmlStr = "";
                 for (let i = 0; i < rs.length; i++) {
+                    var htmlStr = "";
                     htmlStr += "<div class=\"row\">";
                     htmlStr += "<p class=\"bg-success lead \">" + rs[i].title + "</p>";
                     htmlStr += "<p class=\"lead\">" + rs[i].content + "</p>";
@@ -51,9 +51,9 @@
                     htmlStr += "<p>" + rs[i].create_time + "</p>";
                     htmlStr += "<button class=\"btn btn-primary pull-right \" data-id=" + rs[i].id + ">详情</button>";
                     htmlStr += "<div class=\"row\" style='border-top: 1px solid black;' ><br/><br/><br/></div>";
+                    $("div.container").append(htmlStr); //不要等所有 html 都拼凑好
                 }
 
-                $("div.container").append(htmlStr);
                 $("button").click(function () {
                     window.location.href = "<%=request.getContextPath() %>/show.jsp?data-id=" + $(this).attr("data-id");
                 });
