@@ -7,19 +7,17 @@ import com.linuxea.controller.base.BaseController;
  */
 public class IndexController extends BaseController {
 
-    public void index() {
-        renderJsp("/index.jsp");
-    }
+	public void index() {
+		renderJsp("/index.jsp");
+	}
 
-    public void create() {
+	public void create() {
 		if (getSessionAttr("isLogin") == null) {
 			super.renderJsp("/login.jsp");
 		} else {
 			super.renderJsp("/plugin/JHtmlArea/edit.jsp");
 		}
 	}
-
-
 
 
 }

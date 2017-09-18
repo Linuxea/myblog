@@ -21,71 +21,71 @@ import com.linuxea.model._MappingKit;
  */
 public class JfinalSystem extends JFinalConfig {
 
-    static {
-        PropKit.use("sqlConfig.properties");
-    }
+	static {
+		PropKit.use("sqlConfig.properties");
+	}
 
-    /**
-     * druid 插件复用
-     *
-     * @return
-     */
-    public static DruidPlugin getDruidPlugin() {
-        String url = PropKit.get("url");
-        String userName = PropKit.get("userName");
-        String password = PropKit.get("password");
-        DruidPlugin druidPlugin = new DruidPlugin(url, userName, password);
-        return druidPlugin;
-    }
+	/**
+	 * druid 插件复用
+	 *
+	 * @return
+	 */
+	public static DruidPlugin getDruidPlugin() {
+		String url = PropKit.get("url");
+		String userName = PropKit.get("userName");
+		String password = PropKit.get("password");
+		DruidPlugin druidPlugin = new DruidPlugin(url, userName, password);
+		return druidPlugin;
+	}
 
-    @Override
-    public void configConstant(Constants me) {
+	public static void main(String[] args) {
+		JFinal.start("src/main/webapp", 8080, "/");
+	}
+
+	@Override
+	public void configConstant(Constants me) {
 //        me.setDevMode(true);
-        me.setViewType(ViewType.JSP);
-        me.setError404View("404.html");
-        me.setError401View("404.html");
-        me.setError403View("404.html");
-        me.setError500View("404.html");
-        me.setError500View("404.html");
+		me.setViewType(ViewType.JSP);
+		me.setError404View("404.html");
+		me.setError401View("404.html");
+		me.setError403View("404.html");
+		me.setError500View("404.html");
+		me.setError500View("404.html");
 
 	}
 
-    @Override
-    public void configRoute(Routes me) {
-        me.add("/", IndexController.class);
-        me.add("/tagController", TagManagerController.class);
-        me.add("/kindController", ClassManagerController.class);
-        me.add("/articleController", ArticleManagerController.class);
+	@Override
+	public void configRoute(Routes me) {
+		me.add("/", IndexController.class);
+		me.add("/tagController", TagManagerController.class);
+		me.add("/kindController", ClassManagerController.class);
+		me.add("/articleController", ArticleManagerController.class);
 		me.add("/loginController", LoginController.class);
 	}
 
-    @Override
-    public void configEngine(Engine me) {
+	@Override
+	public void configEngine(Engine me) {
 
-    }
+	}
 
-    @Override
-    public void configPlugin(Plugins me) {
-        DruidPlugin druidPlugin = getDruidPlugin();
-        me.add(druidPlugin);
-        ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
+	@Override
+	public void configPlugin(Plugins me) {
+		DruidPlugin druidPlugin = getDruidPlugin();
+		me.add(druidPlugin);
+		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
 //        arp.setShowSql(true);
-        arp.setDialect(new MysqlDialect());
-        _MappingKit.mapping(arp);
-        me.add(arp);
-    }
+		arp.setDialect(new MysqlDialect());
+		_MappingKit.mapping(arp);
+		me.add(arp);
+	}
 
-    @Override
-    public void configInterceptor(Interceptors me) {
+	@Override
+	public void configInterceptor(Interceptors me) {
 //		me.add(new Restful());
 		me.add(new ExceptionInterceptor());
-    }
+	}
 
-	public static void main(String[] args) {
-        JFinal.start("src/main/webapp", 8080, "/");
-    }
-
-    @Override
-    public void configHandler(Handlers me) {
-    }
+	@Override
+	public void configHandler(Handlers me) {
+	}
 }

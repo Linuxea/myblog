@@ -6,5 +6,5 @@ package com.linuxea.model;
  */
 @SuppressWarnings("serial")
 public class Kind extends com.linuxea.model.base.BaseKind<Kind> {
-    public static final Kind dao = new Kind().dao();
+	public static final Kind dao = new Kind().dao();
 }

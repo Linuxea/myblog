@@ -10,27 +10,27 @@ import com.linuxea.service.tagmanager.TagManagerService;
  */
 public class TagManagerController extends BaseController {
 
-    private static final TagManagerService SERVICE = TagManagerService.SERVICE;
+	private static final TagManagerService SERVICE = TagManagerService.SERVICE;
 
-    public void index() {
-        super.renderJson("hello");
-    }
+	public void index() {
+		super.renderJson("hello");
+	}
 
-    public void add() {
-        SERVICE.add(getModel(Tag.class));
-    }
+	public void add() {
+		SERVICE.add(getModel(Tag.class));
+	}
 
-    public void delete() {
-        SERVICE.delete(getModel(Tag.class));
-    }
+	public void delete() {
+		SERVICE.delete(getModel(Tag.class));
+	}
 
-    public void update() {
-        SERVICE.update(getModel(Tag.class));
-    }
+	public void update() {
+		SERVICE.update(getModel(Tag.class));
+	}
 
-    public void find() {
+	public void find() {
 
-    }
+	}
 
 	/**
 	 * 按照标签进行分组

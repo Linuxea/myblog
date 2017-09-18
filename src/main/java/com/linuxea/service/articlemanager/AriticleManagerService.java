@@ -16,24 +16,23 @@ import java.util.List;
  */
 public class AriticleManagerService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AriticleManagerService.class);
-
-    public static final AriticleManagerService SERVICE = new AriticleManagerService();
+	public static final AriticleManagerService SERVICE = new AriticleManagerService();
 	public static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
+	private static final Logger LOGGER = LoggerFactory.getLogger(AriticleManagerService.class);
 
 	public Kv add(Article article, String labels) {
 		List<String> labelsId = TAG_MANAGER_SERVICE.checkLabels(labels);
 		Kv kv = Kv.create();
-        article.setCreateTime(new Date());
-        article.setId(IdKits.wantId());
-        if (article.save()) {
-            kv.set("stateCode", "ok");
-        } else {
-            kv.set("stateCode", "notok");
-        }
+		article.setCreateTime(new Date());
+		article.setId(IdKits.wantId());
+		if (article.save()) {
+			kv.set("stateCode", "ok");
+		} else {
+			kv.set("stateCode", "notok");
+		}
 		bindTag(labelsId, article.getId());
 		return kv;
-    }
+	}
 
 
 	/**
@@ -56,9 +55,9 @@ public class AriticleManagerService {
 
 	public boolean update(Article article) {
 		return article.update();
-    }
+	}
 
-    public boolean delete(Article article) {
+	public boolean delete(Article article) {
 		article.setStatus(0);
 		boolean ok = article.update();
 		if (ok) {
@@ -67,19 +66,19 @@ public class AriticleManagerService {
 		return ok;
 	}
 
-    /**
-     * 列出文章每十条
-     */
-    public void find() {
+	/**
+	 * 列出文章每十条
+	 */
+	public void find() {
 
-    }
+	}
 
-    /**
-     * 加载一条详情
-     *
-     * @param id
-     */
-    public Article loadOne(String id) {
-        return Article.dao.findById(id);
-    }
+	/**
+	 * 加载一条详情
+	 *
+	 * @param id
+	 */
+	public Article loadOne(String id) {
+		return Article.dao.findById(id);
+	}
 }

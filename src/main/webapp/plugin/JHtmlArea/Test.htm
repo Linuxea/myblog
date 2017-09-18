@@ -11,13 +11,14 @@
 
     <style type="text/css">
         /* body { background: #ccc;} */
-        div.jHtmlArea .ToolBar ul li a.custom_disk_button 
-        {
+        div.jHtmlArea .ToolBar ul li a.custom_disk_button {
             background: url(images/disk.png) no-repeat;
             background-position: 0 0;
         }
-        
-        div.jHtmlArea { border: solid 1px #ccc; }
+
+        div.jHtmlArea {
+            border: solid 1px #ccc;
+        }
 
 
     </style>
@@ -26,10 +27,10 @@
 <textarea id="test" cols="50"
           rows="15"><p><h3>Test H3</h3>This is some sample text to test out the <b>WYSIWYG Control</b>.</p></textarea>
 <script type="text/javascript">
-        // You can do this to perform a global override of any of the "default" options
-        // jHtmlArea.fn.defaultOptions.css = "jHtmlArea.Editor.css";
+    // You can do this to perform a global override of any of the "default" options
+    // jHtmlArea.fn.defaultOptions.css = "jHtmlArea.Editor.css";
 
-        $(function() {
+    $(function () {
         /*
             $("#test").htmlarea();
 
@@ -54,8 +55,8 @@
                 }
             });
         */
-            $("textarea").htmlarea(); // Initialize jHtmlArea's with all default values
-        });
+        $("textarea").htmlarea(); // Initialize jHtmlArea's with all default values
+    });
 
 
 </script>

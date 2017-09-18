@@ -7,5 +7,5 @@ import com.linuxea.model.base.BaseTag;
  */
 @SuppressWarnings("serial")
 public class Tag extends BaseTag<Tag> {
-    public static final Tag dao = new Tag().dao();
+	public static final Tag dao = new Tag().dao();
 }

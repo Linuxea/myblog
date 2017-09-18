@@ -10,34 +10,34 @@ import com.linuxea.service.classmanager.ClassManagerService;
  */
 public class ClassManagerController extends BaseController {
 
-    private ClassManagerService service = ClassManagerService.service;
+	private ClassManagerService service = ClassManagerService.service;
 
-    /**
-     * 跳转主页
-     */
-    public void index() {
+	/**
+	 * 跳转主页
+	 */
+	public void index() {
 
-    }
+	}
 
-    /**
-     * 添加类别
-     */
-    public void add() {
-        service.add(getModel(Kind.class));
-    }
+	/**
+	 * 添加类别
+	 */
+	public void add() {
+		service.add(getModel(Kind.class));
+	}
 
-    /**
-     * 更新类别
-     */
-    public void update() {
-        service.update(getModel(Kind.class));
-    }
+	/**
+	 * 更新类别
+	 */
+	public void update() {
+		service.update(getModel(Kind.class));
+	}
 
-    /**
-     * 删除类别
-     */
-    public void delete() {
-        service.update(getModel(Kind.class));
-    }
+	/**
+	 * 删除类别
+	 */
+	public void delete() {
+		service.update(getModel(Kind.class));
+	}
 
 }

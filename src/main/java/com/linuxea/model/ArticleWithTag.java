@@ -7,5 +7,5 @@ import com.linuxea.model.base.BaseArticleWithTag;
  */
 @SuppressWarnings("serial")
 public class ArticleWithTag extends BaseArticleWithTag<ArticleWithTag> {
-    public static final ArticleWithTag dao = new ArticleWithTag().dao();
+	public static final ArticleWithTag dao = new ArticleWithTag().dao();
 }

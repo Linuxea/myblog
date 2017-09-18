@@ -6,10 +6,10 @@
 * Licensed under the Microsoft Reciprocal License (Ms-RL)
 * http://jhtmlarea.codeplex.com/license
 */
-(function($) {
+(function ($) {
     if (jHtmlArea) {
         var oldForecolor = jHtmlArea.fn.forecolor;
-        jHtmlArea.fn.forecolor = function(c) {
+        jHtmlArea.fn.forecolor = function (c) {
             if (c) {
                 // If color is specified, then use the "default" method functionality
                 oldForecolor.call(this, c);
@@ -30,13 +30,13 @@
             }
         };
     }
-    var menu = window.jHtmlAreaColorPickerMenu = function(ownerElement, options) {
+    var menu = window.jHtmlAreaColorPickerMenu = function (ownerElement, options) {
         return new jHtmlAreaColorPickerMenu.fn.init(ownerElement, options);
     };
     menu.fn = menu.prototype = {
         jhtmlareacolorpickermenu: "0.8",
 
-        init: function(ownerElement, options) {
+        init: function (ownerElement, options) {
             var opts = $.extend({}, menu.defaultOptions, options);
             var that = this;
             var owner = this.owner = $(ownerElement);
@@ -57,8 +57,8 @@
             for (var i = 0; i < opts.colors.length; i++) {
                 var c = opts.colors[i];
                 $("<div/>").css("background-color", c).appendTo(picker).click(
-                    (function(color) {
-                        return function() {
+                    (function (color) {
+                        return function () {
                             if (opts.colorChosen) {
                                 opts.colorChosen.call(this, color);
                             }
@@ -69,7 +69,7 @@
             }
 
             $("<div/>").html("<div></div>Automatic").addClass("automatic").appendTo(picker).click(
-                function() {
+                function () {
                     if (opts.colorChosen) {
                         opts.colorChosen.call(this, null);
                     }
@@ -79,21 +79,22 @@
 
 
             var autoHide = false;
-            picker.appendTo(owner.parent()).
-                show().
-                mouseout(function() {
-                    autoHide = true;
-                    that.currentTimeout = window.setTimeout(function() { if (autoHide === true) { that.hide(); } }, 1000);
-                }).
-                mouseover(function() {
-                    if (that.currentTimeout) {
-                        window.clearTimeout(that.currentTimeout);
-                        that.currentTimeout = null;
+            picker.appendTo(owner.parent()).show().mouseout(function () {
+                autoHide = true;
+                that.currentTimeout = window.setTimeout(function () {
+                    if (autoHide === true) {
+                        that.hide();
                     }
-                    autoHide = false;
-                });
+                }, 1000);
+            }).mouseover(function () {
+                if (that.currentTimeout) {
+                    window.clearTimeout(that.currentTimeout);
+                    that.currentTimeout = null;
+                }
+                autoHide = false;
+            });
         },
-        hide: function() {
+        hide: function () {
             this.picker.hide();
             this.picker.remove();
         }

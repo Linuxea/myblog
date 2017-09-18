@@ -22,21 +22,21 @@ public class ArticleManagerController extends BaseController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleManagerController.class);
 
-    private static final AriticleManagerService ARITICLE_MANAGER_SERVICE = AriticleManagerService.SERVICE;
+	private static final AriticleManagerService ARITICLE_MANAGER_SERVICE = AriticleManagerService.SERVICE;
 	private static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
 
 	/**
-     * 主页跳转
-     */
-    public void index() {
+	 * 主页跳转
+	 */
+	public void index() {
 		super.renderJsp("/plugin/JHtmlArea/edit.jsp");
 	}
 
 
-    /**
-     * 加载一条详情
-     */
-    public void loadOne() {
+	/**
+	 * 加载一条详情
+	 */
+	public void loadOne() {
 		Map<String, Object> dataMap = Maps.newHashMap();
 		Article article = ARITICLE_MANAGER_SERVICE.loadOne(getPara("id"));
 		if (article == null) {
@@ -56,9 +56,9 @@ public class ArticleManagerController extends BaseController {
 		renderJson(dataMap);
 	}
 
-    /**
-     * 新增文章
-     */
+	/**
+	 * 新增文章
+	 */
 	public void add() {
 		if (super.getSessionAttr("isLogin") == null) {
 			LOGGER.warn("请勿跳过登录步骤");
@@ -68,22 +68,22 @@ public class ArticleManagerController extends BaseController {
 		String labels = getPara("labels");
 		Kv kv = ARITICLE_MANAGER_SERVICE.add(article, labels);
 		renderJson(kv);
-    }
+	}
 
-    /**
-     * 更新文章
-     */
-    public void update() {
+	/**
+	 * 更新文章
+	 */
+	public void update() {
 		if (getSessionAttr("isLogin") == null) {
 			LOGGER.error("非登录者不能更新!");
 			return;
 		}
 		ARITICLE_MANAGER_SERVICE.update(getModel(Article.class));
-    }
+	}
 
-    /**
-     * 删除文章
-     */
+	/**
+	 * 删除文章
+	 */
 	public void delete(@Para("") Article article) {
 		if (getSessionAttr("isLogin") == null) {
 			LOGGER.error("非登录者不能删除!");
@@ -94,14 +94,14 @@ public class ArticleManagerController extends BaseController {
 		renderJson("rs", okOrNot);
 	}
 
-    /**
-     * 列出文章
-     */
-    public void find() {
+	/**
+	 * 列出文章
+	 */
+	public void find() {
 		List<Article> articleList =
 				Article.dao.find("select * from article where status = 1 order by create_time desc");
 		// 状态为1表示正常状态
 		renderJson(articleList);
-    }
+	}
 
 }

@@ -50,11 +50,10 @@ public class CrmticismManagerService {
  */
 class ArticleWithMessage extends Model<ArticleWithMessage> {
 
+	public static final ArticleWithMessage dao = new ArticleWithMessage().dao();
 	private String id;
 	private String articleId;
 	private String message;
-
-	public static final ArticleWithMessage dao = new ArticleWithMessage().dao();
 
 	public String getId() {
 		return id;

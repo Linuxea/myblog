@@ -9,44 +9,44 @@ import com.jfinal.plugin.activerecord.Model;
 @SuppressWarnings("serial")
 public abstract class BaseArticle<M extends BaseArticle<M>> extends Model<M> implements IBean {
 
-	public void setId(java.lang.String id) {
-		set("id", id);
-	}
-
 	public java.lang.String getId() {
 		return getStr("id");
 	}
 
-	public void setTitle(java.lang.String title) {
-		set("title", title);
+	public void setId(java.lang.String id) {
+		set("id", id);
 	}
 
 	public java.lang.String getTitle() {
 		return getStr("title");
 	}
 
-	public void setContent(java.lang.String content) {
-		set("content", content);
+	public void setTitle(java.lang.String title) {
+		set("title", title);
 	}
 
 	public java.lang.String getContent() {
 		return getStr("content");
 	}
 
-	public void setCreateTime(java.util.Date createTime) {
-		set("create_time", createTime);
+	public void setContent(java.lang.String content) {
+		set("content", content);
 	}
 
 	public java.util.Date getCreateTime() {
 		return get("create_time");
 	}
 
-	public void setStatus(java.lang.Integer status) {
-		set("status", status);
+	public void setCreateTime(java.util.Date createTime) {
+		set("create_time", createTime);
 	}
 
 	public java.lang.Integer getStatus() {
 		return getInt("status");
+	}
+
+	public void setStatus(java.lang.Integer status) {
+		set("status", status);
 	}
 
 }

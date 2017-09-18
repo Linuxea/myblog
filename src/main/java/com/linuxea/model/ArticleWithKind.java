@@ -7,5 +7,5 @@ import com.linuxea.model.base.BaseArticleWithKind;
  */
 @SuppressWarnings("serial")
 public class ArticleWithKind extends BaseArticleWithKind<ArticleWithKind> {
-    public static final ArticleWithKind dao = new ArticleWithKind().dao();
+	public static final ArticleWithKind dao = new ArticleWithKind().dao();
 }

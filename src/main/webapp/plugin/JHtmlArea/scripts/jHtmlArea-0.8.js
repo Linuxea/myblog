@@ -14,7 +14,7 @@
         $browser.mozilla = false;
         $browser.safari = false;
         $browser.version = 0;
-        
+
         if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
             $browser.msie = true;
             $browser.version = parseFloat(RegExp.$1);
@@ -45,12 +45,18 @@
     $.fn.htmlarea = function (opts) {
         if (opts && typeof (opts) === "string") {
             var args = [];
-            for (var i = 1; i < arguments.length; i++) { args.push(arguments[i]); }
+            for (var i = 1; i < arguments.length; i++) {
+                args.push(arguments[i]);
+            }
             var htmlarea = jHtmlArea(this[0]);
             var f = htmlarea[opts];
-            if (f) { return f.apply(htmlarea, args); }
+            if (f) {
+                return f.apply(htmlarea, args);
+            }
         }
-        return this.each(function () { jHtmlArea(this, opts); });
+        return this.each(function () {
+            jHtmlArea(this, opts);
+        });
     };
     var jHtmlArea = window.jHtmlArea = function (elem, options) {
         if (elem.jquery) {
@@ -91,9 +97,11 @@
                 // Fix total height to match TextArea
                 iframe.height(iframe.height() - toolbar.height());
                 toolbar.width(textarea.width());
-                
 
-                if (opts.loaded) { opts.loaded.call(this); }
+
+                if (opts.loaded) {
+                    opts.loaded.call(this);
+                }
             }
         },
         dispose: function () {
@@ -103,16 +111,16 @@
         },
         execCommand: function (a, b, c) {
             this.iframe[0].contentWindow.focus();
-            
+
             if ($browser.msie === true && $browser.version >= 11) {
                 if (this.previousRange) {
                     var rng = this.previousRange;
-                    var sel = this.getSelection()
+                    var sel = this.getSelection();
                     sel.removeAllRanges();
                     sel.addRange(rng);
                 }
             }
-            
+
             this.editor.execCommand(a, b || false, c || null);
             this.updateTextArea();
         },
@@ -144,7 +152,9 @@
         },
         getRange: function () {
             var s = this.getSelection();
-            if (!s) { return null; }
+            if (!s) {
+                return null;
+            }
             if (s.getRangeAt) {
                 if (s.rangeCount > 0) {
                     return s.getRangeAt(0);
@@ -188,10 +198,18 @@
         paste: function () {
             this.ec("paste");
         },
-        bold: function () { this.ec("bold"); },
-        italic: function () { this.ec("italic"); },
-        underline: function () { this.ec("underline"); },
-        strikeThrough: function () { this.ec("strikethrough"); },
+        bold: function () {
+            this.ec("bold");
+        },
+        italic: function () {
+            this.ec("italic");
+        },
+        underline: function () {
+            this.ec("underline");
+        },
+        strikeThrough: function () {
+            this.ec("strikethrough");
+        },
         image: function (url) {
             if ($browser.msie === true && !url) {
                 this.ec("insertImage", true);
@@ -210,11 +228,21 @@
                 this.ec("createLink", false, prompt("Link URL:", "http://"));
             }
         },
-        unlink: function () { this.ec("unlink", false, []); },
-        orderedList: function () { this.ec("insertorderedlist"); },
-        unorderedList: function () { this.ec("insertunorderedlist"); },
-        superscript: function () { this.ec("superscript"); },
-        subscript: function () { this.ec("subscript"); },
+        unlink: function () {
+            this.ec("unlink", false, []);
+        },
+        orderedList: function () {
+            this.ec("insertorderedlist");
+        },
+        unorderedList: function () {
+            this.ec("insertunorderedlist");
+        },
+        superscript: function () {
+            this.ec("superscript");
+        },
+        subscript: function () {
+            this.ec("subscript");
+        },
 
         p: function () {
             this.formatBlock("<p>");
@@ -326,26 +354,47 @@
 
     jHtmlArea.defaultOptions = {
         toolbar: [
-        ["html"], ["bold", "italic", "underline", "strikethrough", "|", "subscript", "superscript"],
-        ["increasefontsize", "decreasefontsize"],
-        ["orderedlist", "unorderedlist"],
-        ["indent", "outdent"],
-        ["justifyleft", "justifycenter", "justifyright"],
-        ["link", "unlink", "image", "horizontalrule"],
-        ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
-        ["cut", "copy", "paste"]
-    ],
+            ["html"], ["bold", "italic", "underline", "strikethrough", "|", "subscript", "superscript"],
+            ["increasefontsize", "decreasefontsize"],
+            ["orderedlist", "unorderedlist"],
+            ["indent", "outdent"],
+            ["justifyleft", "justifycenter", "justifyright"],
+            ["link", "unlink", "image", "horizontalrule"],
+            ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
+            ["cut", "copy", "paste"]
+        ],
         css: null,
         toolbarText: {
-            bold: "Bold", italic: "Italic", underline: "Underline", strikethrough: "Strike-Through",
-            cut: "Cut", copy: "Copy", paste: "Paste",
-            h1: "Heading 1", h2: "Heading 2", h3: "Heading 3", h4: "Heading 4", h5: "Heading 5", h6: "Heading 6", p: "Paragraph",
-            indent: "Indent", outdent: "Outdent", horizontalrule: "Insert Horizontal Rule",
-            justifyleft: "Left Justify", justifycenter: "Center Justify", justifyright: "Right Justify",
-            increasefontsize: "Increase Font Size", decreasefontsize: "Decrease Font Size", forecolor: "Text Color",
-            link: "Insert Link", unlink: "Remove Link", image: "Insert Image",
-            orderedlist: "Insert Ordered List", unorderedlist: "Insert Unordered List",
-            subscript: "Subscript", superscript: "Superscript",
+            bold: "Bold",
+            italic: "Italic",
+            underline: "Underline",
+            strikethrough: "Strike-Through",
+            cut: "Cut",
+            copy: "Copy",
+            paste: "Paste",
+            h1: "Heading 1",
+            h2: "Heading 2",
+            h3: "Heading 3",
+            h4: "Heading 4",
+            h5: "Heading 5",
+            h6: "Heading 6",
+            p: "Paragraph",
+            indent: "Indent",
+            outdent: "Outdent",
+            horizontalrule: "Insert Horizontal Rule",
+            justifyleft: "Left Justify",
+            justifycenter: "Center Justify",
+            justifyright: "Right Justify",
+            increasefontsize: "Increase Font Size",
+            decreasefontsize: "Decrease Font Size",
+            forecolor: "Text Color",
+            link: "Insert Link",
+            unlink: "Remove Link",
+            image: "Insert Image",
+            orderedlist: "Insert Ordered List",
+            unorderedlist: "Insert Unordered List",
+            subscript: "Subscript",
+            superscript: "Superscript",
             html: "Show/Hide HTML Source View"
         }
     };
@@ -366,14 +415,20 @@
             edit.write(this.textarea.val());
             edit.close();
             if (options.css) {
-                var e = edit.createElement('link'); e.rel = 'stylesheet'; e.type = 'text/css'; e.href = options.css; edit.getElementsByTagName('head')[0].appendChild(e);
+                var e = edit.createElement('link');
+                e.rel = 'stylesheet';
+                e.type = 'text/css';
+                e.href = options.css;
+                edit.getElementsByTagName('head')[0].appendChild(e);
             }
         },
         initToolBar: function (options) {
             var that = this;
 
             var menuItem = function (className, altText, action) {
-                return $("<li/>").append($("<a href='javascript:void(0);'/>").addClass(className).attr("title", altText).click(function () { action.call(that, $(this)); }));
+                return $("<li/>").append($("<a href='javascript:void(0);'/>").addClass(className).attr("title", altText).click(function () {
+                    action.call(that, $(this));
+                }));
             };
 
             function addButtons(arr) {
@@ -388,9 +443,14 @@
                                 // If button name exists in priv.toolbarButtons then call the "method" defined there, otherwise call the method with the same name
                                 var m = priv.toolbarButtons[e] || e;
                                 if ((typeof (m)).toLowerCase() === "function") {
-                                    return function (btn) { m.call(this, btn); };
+                                    return function (btn) {
+                                        m.call(this, btn);
+                                    };
                                 } else {
-                                    return function () { this[m](); this.editor.body.focus(); };
+                                    return function () {
+                                        this[m]();
+                                        this.editor.body.focus();
+                                    };
                                 }
                             })(e.toLowerCase());
                             var t = options.toolbarText[e.toLowerCase()];
@@ -400,7 +460,7 @@
                         ul.append(menuItem(e.css, e.text, e.action));
                     }
                 }
-            };
+            }
             if (options.toolbar.length !== 0 && priv.isArray(options.toolbar[0])) {
                 for (var i = 0; i < options.toolbar.length; i++) {
                     addButtons(options.toolbar[i]);
@@ -416,11 +476,7 @@
                 t.updateHtmlArea();
             };
 
-            this.textarea.click(fnHA).
-                keyup(fnHA).
-                keydown(fnHA).
-                mousedown(fnHA).
-                blur(fnHA);
+            this.textarea.click(fnHA).keyup(fnHA).keydown(fnHA).mousedown(fnHA).blur(fnHA);
 
             this.iframe.blur(function () {
                 t.previousRange = t.getRange();
@@ -430,13 +486,12 @@
                 t.updateTextArea();
             };
 
-            $(this.editor.body).click(fnTA).
-                keyup(fnTA).
-                keydown(fnTA).
-                mousedown(fnTA).
-                blur(fnTA);
+            $(this.editor.body).click(fnTA).keyup(fnTA).keydown(fnTA).mousedown(fnTA).blur(fnTA);
 
-            $('form').submit(function () { t.toggleHTMLView(); t.toggleHTMLView(); });
+            $('form').submit(function () {
+                t.toggleHTMLView();
+                t.toggleHTMLView();
+            });
             //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
 
 

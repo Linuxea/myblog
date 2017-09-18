@@ -7,20 +7,20 @@ import com.linuxea.model.Kind;
  */
 public class ClassManagerService {
 
-    public static final ClassManagerService service = new ClassManagerService();
+	public static final ClassManagerService service = new ClassManagerService();
 
-    public boolean add(Kind kind) {
-        return kind.save();
-    }
+	public boolean add(Kind kind) {
+		return kind.save();
+	}
 
-    public boolean delete(String id) {
-        Kind kind = new Kind();
-        kind.setId(id);
-        return kind.delete();
-    }
+	public boolean delete(String id) {
+		Kind kind = new Kind();
+		kind.setId(id);
+		return kind.delete();
+	}
 
-    public boolean update(Kind kind) {
-        return kind.update();
-    }
+	public boolean update(Kind kind) {
+		return kind.update();
+	}
 
 }

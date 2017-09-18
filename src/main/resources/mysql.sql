@@ -1,46 +1,54 @@
-create database myblog;
-use myblog;
+CREATE DATABASE myblog;
+USE myblog;
 
-create table kind(
+CREATE TABLE kind (
   id          VARCHAR(36) NOT NULL,
   name        VARCHAR(50) NOT NULL,
   create_time DATETIME,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 
 CREATE TABLE `article` (
-  `id`          varchar(36) NOT NULL,
-  `title`       varchar(50) NOT NULL,
-  `content`     longtext,
-  `create_time` datetime DEFAULT NULL,
+  `id`          VARCHAR(36) NOT NULL,
+  `title`       VARCHAR(50) NOT NULL,
+  `content`     LONGTEXT,
+  `create_time` DATETIME DEFAULT NULL,
   `status`      TINYINT  DEFAULT 1,
   PRIMARY KEY (`id`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-create table tag(
+CREATE TABLE tag (
   id          VARCHAR(36) NOT NULL,
   name        VARCHAR(50) NOT NULL,
   create_time DATETIME,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 
-create table article_with_kind(
+CREATE TABLE article_with_kind (
   id         VARCHAR(36) NOT NULL,
   article_id VARCHAR(36) NOT NULL,
   kind_id    VARCHAR(36) NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
-create table article_with_tag(
+CREATE TABLE article_with_tag (
   id         VARCHAR(36) NOT NULL,
   article_id VARCHAR(36) NOT NULL,
   tag_id     VARCHAR(36) NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE user (
   id            VARCHAR(36) NOT NULL,

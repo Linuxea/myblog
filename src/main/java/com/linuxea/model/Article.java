@@ -6,5 +6,5 @@ package com.linuxea.model;
  */
 @SuppressWarnings("serial")
 public class Article extends com.linuxea.model.base.BaseArticle<Article> {
-    public static final Article dao = new Article().dao();
+	public static final Article dao = new Article().dao();
 }

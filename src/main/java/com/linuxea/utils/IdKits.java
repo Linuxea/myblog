@@ -9,8 +9,8 @@ import java.util.UUID;
 public class IdKits {
 
 
-    public static final String wantId() {
-        return UUID.randomUUID().toString();
-    }
+	public static final String wantId() {
+		return UUID.randomUUID().toString();
+	}
 
 }
