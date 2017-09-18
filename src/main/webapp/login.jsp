@@ -26,18 +26,18 @@
 
     <div class="table-responsive">
 
-        <form action="/loginController/login">
+        <form action="/loginController/login" type="post">
 
             <table class="table table-striped table-bordered table-hover">
 
                 <tr>
                     <td class="info">用户名</td>
-                    <td><input type="text" class="form-control" name="user.userName"/></td>
+                    <td><input type="text" class="form-control" name="user.user_name"/></td>
                 </tr>
 
                 <tr>
                     <td class="info">密码</td>
-                    <td><input type="text" class="form-control" name="user.password"/></td>
+                    <td><input type="text" class="form-control" name="user.user_password"/></td>
                 </tr>
 
                 <tr>

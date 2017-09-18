@@ -17,7 +17,7 @@ public class LoginService {
 
 	public boolean login(User user) {
 		User getUser =
-				User.dao.findFirst("select * from user where user_name = ? and password = ?", user.getUserName(), user.getUserPassword());
+				User.dao.findFirst("select * from user where user_name = ? and user_password = ?", user.getUserName(), user.getUserPassword());
 		return null != getUser;
 	}
 
