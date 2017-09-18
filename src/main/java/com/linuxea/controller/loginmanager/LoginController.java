@@ -41,6 +41,7 @@ public class LoginController extends BaseController {
 		User user = getModel(User.class);
 		boolean ok = LoginService.LOGIN_SERVICE.login(user);
 		if (ok) {
+			super.setSessionAttr("currentUser", user);
 			super.setSessionAttr("isLogin", true);
 			LoginCountUtil.countSuccess(ip, true);
 			LOGGER.info(user.getUserName() + "登录成功,ip为;");
