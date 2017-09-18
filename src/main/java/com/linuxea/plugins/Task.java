@@ -3,10 +3,10 @@ package com.linuxea.plugins;
 import org.quartz.Job;
 
 /**
- *@date      2017年3月1日 下午12:25:49
- *@desc      class description
- *@version   1.0
- *@author    linuxea
+ * @author linuxea
+ * @version 1.0
+ * @date 2017年3月1日 下午12:25:49
+ * @desc class description
  */
 
 public class Task {

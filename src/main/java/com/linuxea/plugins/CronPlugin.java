@@ -4,10 +4,10 @@ import com.jfinal.plugin.IPlugin;
 import org.quartz.Job;
 
 /**
- *@date      2017年3月1日 上午10:50:49
- *@desc 定时任务插件
- *@version   1.0
- *@author    linuxea
+ * @author linuxea
+ * @version 1.0
+ * @date 2017年3月1日 上午10:50:49
+ * @desc 定时任务插件
  */
 public class CronPlugin implements IPlugin {
 

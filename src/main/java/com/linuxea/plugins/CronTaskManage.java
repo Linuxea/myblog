@@ -14,10 +14,10 @@ import static org.quartz.TriggerBuilder.newTrigger;
 
 
 /**
- *@date      2017年3月1日 上午10:40:14
- *@desc 定时任务的管理实现类
- *@version   1.0
- *@author    linuxea
+ * @author linuxea
+ * @version 1.0
+ * @date 2017年3月1日 上午10:40:14
+ * @desc 定时任务的管理实现类
  */
 public class CronTaskManage implements ICronManage {
 
