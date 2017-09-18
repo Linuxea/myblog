@@ -37,7 +37,7 @@
 
                 <tr>
                     <td class="info">密码</td>
-                    <td><input type="text" class="form-control" name="user.user_password"/></td>
+                    <td><input type="password" class="form-control" name="user.user_password"/></td>
                 </tr>
 
                 <tr>
