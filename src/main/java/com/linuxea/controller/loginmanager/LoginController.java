@@ -25,6 +25,12 @@ public class LoginController extends BaseController {
 	 */
 	public void login() {
 
+        if (super.getSessionAttr("currentUser") != null) {
+            User currentUser = getSessionAttr("currentUser");
+            LOGGER.info("当前已经存在登录信息，" + currentUser.getUserName() + ";拒绝重复登录");
+            return;
+        }
+
 		String ip = super.getRequest().getRemoteAddr();
 
 		BlackList blackList =
