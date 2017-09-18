@@ -47,8 +47,8 @@ public class LoginController extends BaseController {
 			LOGGER.info(user.getUserName() + "登录成功,ip为;");
 			forwardAction("/articleController/index"); //跳转到文章创建页面
 		} else {
-			setAttr("msg", "<p class=\"text-error\">用户名或者密码有误</p>");
-			renderJsp("/login.jsp");
+            setAttr("msg", "用户名或者密码有误");
+            renderJsp("/login.jsp");
 			LoginCountUtil.countSuccess(ip, false);
 			LOGGER.error("ip:" + ip + "登录失败");
 		}
