@@ -55,7 +55,7 @@ public class AriticleManagerService {
     }
 
     public boolean delete(Article article) {
-		article.setStatus("0");
+		article.setStatus(0);
 		return article.update();
 	}
 

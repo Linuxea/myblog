@@ -94,7 +94,6 @@ public class ArticleManagerController extends BaseController {
      * 列出文章
      */
     public void find() {
-        //Article.dao.paginate(0, 10, new SqlPara());
 		List<Article> articleList =
 				Article.dao.find("select * from article where status = 1 order by create_time desc");
 		// 状态为1表示正常状态

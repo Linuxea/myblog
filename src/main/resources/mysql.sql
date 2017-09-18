@@ -10,10 +10,11 @@ create table kind(
 
 
 CREATE TABLE `article` (
-   `id` varchar(36) NOT NULL,
-   `title` varchar(50) NOT NULL,
-   `content` longtext,
-   `create_time` datetime DEFAULT NULL,
+  `id`          varchar(36) NOT NULL,
+  `title`       varchar(50) NOT NULL,
+  `content`     longtext,
+  `create_time` datetime DEFAULT NULL,
+  `status`      TINYINT  DEFAULT 1,
    PRIMARY KEY (`id`)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
