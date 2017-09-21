@@ -46,7 +46,7 @@
                     var htmlStr = "";
                     htmlStr += "<div class=\"row\">";
                     htmlStr += "<p class=\"bg-success lead \">" + rs[i].title + "</p>";
-                    htmlStr += "<p class=\"lead\">" + rs[i].content + "</p>";
+//                    htmlStr += "<p class=\"lead\">" + rs[i].content + "</p>";
                     htmlStr += "</div>";
                     htmlStr += "<p>" + rs[i].create_time + "</p>";
                     htmlStr += "<button class=\"btn btn-primary pull-right \" data-id=" + rs[i].id + ">详情</button>";
