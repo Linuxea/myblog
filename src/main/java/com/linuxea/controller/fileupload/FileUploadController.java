@@ -1,4 +1,4 @@
-package com.linuxea.controller;
+package com.linuxea.controller.fileupload;
 
 import com.google.common.io.Files;
 import com.linuxea.controller.base.BaseController;
