@@ -97,6 +97,12 @@
             <version>3.3.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>cos</artifactId>
+            <version>26Dec2008</version>
+        </dependency>
+
 
     </dependencies>
 

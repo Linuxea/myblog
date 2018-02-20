@@ -10,28 +10,28 @@ import org.quartz.Job;
  * @desc 定时任务插件
  */
 public class CronPlugin implements IPlugin {
-
+	
 	private ICronManage cron = new CronTaskManage();
-
+	
 	@Override
 	public boolean start() {
 		this.cron.scanPros();//扫描定时任务配置文件
 		this.cron.startListJob();
 		return true;
 	}
-
+	
 	@Override
 	public boolean stop() {
 		this.cron.stop();
 		return true;
 	}
-
+	
 	public void addTask(String cronTime, Job jobclazz) {
 		this.cron.addJob(null, cronTime, jobclazz);
 	}
-
+	
 	public void addTask(String taskName, String cronTime, Job jobclazz) {
 		this.cron.addJob(taskName, cronTime, jobclazz);
 	}
-
+	
 }

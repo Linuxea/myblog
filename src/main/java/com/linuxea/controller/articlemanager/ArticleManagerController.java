@@ -19,20 +19,20 @@ import java.util.Map;
  * Created by Linuxea on 2017-09-11.
  */
 public class ArticleManagerController extends BaseController {
-
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleManagerController.class);
-
+	
 	private static final AriticleManagerService ARITICLE_MANAGER_SERVICE = AriticleManagerService.SERVICE;
 	private static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
-
+	
 	/**
 	 * 主页跳转
 	 */
 	public void index() {
 		super.renderJsp("/plugin/JHtmlArea/edit.jsp");
 	}
-
-
+	
+	
 	/**
 	 * 加载一条详情
 	 */
@@ -46,16 +46,16 @@ public class ArticleManagerController extends BaseController {
 		List<Record> records = TAG_MANAGER_SERVICE.getTagNamesByArticleName(article);
 		dataMap.put("article", article);
 		dataMap.put("tagNames", records);
-
+		
 		if (getSessionAttr("isLogin") != null) {
 			dataMap.put("enableDelete", true);
 		} else {
 			dataMap.put("enableDelete", false);
 		}
-
+		
 		renderJson(dataMap);
 	}
-
+	
 	/**
 	 * 新增文章
 	 */
@@ -69,7 +69,7 @@ public class ArticleManagerController extends BaseController {
 		Kv kv = ARITICLE_MANAGER_SERVICE.add(article, labels);
 		renderJson(kv);
 	}
-
+	
 	/**
 	 * 更新文章
 	 */
@@ -80,7 +80,7 @@ public class ArticleManagerController extends BaseController {
 		}
 		ARITICLE_MANAGER_SERVICE.update(getModel(Article.class));
 	}
-
+	
 	/**
 	 * 删除文章
 	 */
@@ -93,7 +93,7 @@ public class ArticleManagerController extends BaseController {
 		String okOrNot = result ? "ok" : "notok";
 		renderJson("rs", okOrNot);
 	}
-
+	
 	/**
 	 * 列出文章
 	 */
@@ -103,5 +103,5 @@ public class ArticleManagerController extends BaseController {
 		// 状态为1表示正常状态
 		renderJson(articleList);
 	}
-
+	
 }

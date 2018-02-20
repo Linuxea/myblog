@@ -9,34 +9,34 @@ import com.linuxea.service.tagmanager.TagManagerService;
  * Created by Linuxea on 2017-09-11.
  */
 public class TagManagerController extends BaseController {
-
+	
 	private static final TagManagerService SERVICE = TagManagerService.SERVICE;
-
+	
 	public void index() {
 		super.renderJson("hello");
 	}
-
+	
 	public void add() {
 		SERVICE.add(getModel(Tag.class));
 	}
-
+	
 	public void delete() {
 		SERVICE.delete(getModel(Tag.class));
 	}
-
+	
 	public void update() {
 		SERVICE.update(getModel(Tag.class));
 	}
-
+	
 	public void find() {
-
+	
 	}
-
+	
 	/**
 	 * 按照标签进行分组
 	 */
 	public void group() {
 		TagManagerService.group();
 	}
-
+	
 }

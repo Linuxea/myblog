@@ -18,16 +18,16 @@ import java.util.List;
  * @desc 定时任务管理接口
  */
 public interface ICronManage {
-
+	
 	List<Task> jobLists = new ArrayList<>();
-
+	
 	void startListJob();
-
+	
 	void addJob(String cronTime, Job job);
-
+	
 	void addJob(String taskName, String cronTime, Job job);
-
+	
 	void scanPros();
-
+	
 	void stop();
 }

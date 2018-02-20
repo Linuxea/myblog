@@ -11,12 +11,12 @@ import org.slf4j.LoggerFactory;
  * Created by Linuxea on 2017-09-10.
  */
 public class ExceptionInterceptor implements Interceptor {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(ExceptionInterceptor.class);
-
+	
 	@Override
 	public void intercept(Invocation inv) {
-
+		
 		try {
 			inv.invoke();
 		} catch (BlogException blogException) {
@@ -28,9 +28,9 @@ public class ExceptionInterceptor implements Interceptor {
 		} finally {
 			//Do nothing
 		}
-
+		
 	}
-
+	
 	/**
 	 * 异常记录
 	 *

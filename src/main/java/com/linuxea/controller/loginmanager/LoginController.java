@@ -25,11 +25,11 @@ public class LoginController extends BaseController {
 	 */
 	public void login() {
 
-        if (super.getSessionAttr("currentUser") != null) {
-            User currentUser = getSessionAttr("currentUser");
-            LOGGER.info("当前已经存在登录信息，" + currentUser.getUserName() + ";拒绝重复登录");
-            return;
-        }
+		if (super.getSessionAttr("currentUser") != null) {
+			User currentUser = getSessionAttr("currentUser");
+			LOGGER.info("当前已经存在登录信息，" + currentUser.getUserName() + ";拒绝重复登录");
+			return;
+		}
 
 		String ip = super.getRequest().getRemoteAddr();
 
@@ -53,8 +53,8 @@ public class LoginController extends BaseController {
 			LOGGER.info(user.getUserName() + "登录成功,ip为;");
 			forwardAction("/articleController/index"); //跳转到文章创建页面
 		} else {
-            setAttr("msg", "用户名或者密码有误");
-            renderJsp("/login.jsp");
+			setAttr("msg", "用户名或者密码有误");
+			renderJsp("/login.jsp");
 			LoginCountUtil.countSuccess(ip, false);
 			LOGGER.error("ip:" + ip + "登录失败");
 		}

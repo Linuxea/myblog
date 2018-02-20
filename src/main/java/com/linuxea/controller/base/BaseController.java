@@ -8,7 +8,7 @@ import com.linuxea.model.User;
  * create by linuxea on 2017/9/11 12:58
  **/
 public class BaseController extends Controller {
-
+	
 	/**
 	 * 获取当前登录人的封装信息
 	 *
@@ -17,5 +17,5 @@ public class BaseController extends Controller {
 	protected User getCurrentUser() {
 		return this.getSessionAttr("currentUser");
 	}
-
+	
 }

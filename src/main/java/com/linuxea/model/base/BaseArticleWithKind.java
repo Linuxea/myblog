@@ -8,29 +8,29 @@ import com.jfinal.plugin.activerecord.Model;
  */
 @SuppressWarnings("serial")
 public abstract class BaseArticleWithKind<M extends BaseArticleWithKind<M>> extends Model<M> implements IBean {
-
+	
 	public java.lang.String getId() {
 		return getStr("id");
 	}
-
+	
 	public void setId(java.lang.String id) {
 		set("id", id);
 	}
-
+	
 	public java.lang.String getArticleId() {
 		return getStr("article_id");
 	}
-
+	
 	public void setArticleId(java.lang.String articleId) {
 		set("article_id", articleId);
 	}
-
+	
 	public java.lang.String getKindId() {
 		return getStr("kind_id");
 	}
-
+	
 	public void setKindId(java.lang.String kindId) {
 		set("kind_id", kindId);
 	}
-
+	
 }

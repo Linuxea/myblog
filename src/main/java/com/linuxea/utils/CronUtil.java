@@ -21,11 +21,11 @@ import java.util.List;
  */
 
 public class CronUtil {
-
+	
 	private static final Logger log = LoggerFactory.getLogger(CronUtil.class);
 	private static final String CRON_PROP_FILE = "cron.properties";
 	private static List<Task> taskList = new ArrayList<>();
-
+	
 	public static List<Task> scan() {
 		Prop prop = PropKit.use(CRON_PROP_FILE);
 		String cronKinds = prop.get("cronKind");
@@ -71,11 +71,11 @@ public class CronUtil {
 					e.printStackTrace();
 					log.error(e.getMessage());
 				}
-
+				
 			}
-
+			
 		}
 		return taskList;
 	}
-
+	
 }

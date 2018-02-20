@@ -14,7 +14,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
  * </pre>
  */
 public class _MappingKit {
-
+	
 	public static void mapping(ActiveRecordPlugin arp) {
 		arp.addMapping("article", "id", Article.class);
 		arp.addMapping("article_with_kind", "id", ArticleWithKind.class);

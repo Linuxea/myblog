@@ -7,10 +7,10 @@ import java.util.UUID;
  * create by linuxea on 2017/9/11 12:13
  **/
 public class IdKits {
-
-
+	
+	
 	public static final String wantId() {
 		return UUID.randomUUID().toString();
 	}
-
+	
 }

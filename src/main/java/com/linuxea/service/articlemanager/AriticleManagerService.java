@@ -15,11 +15,11 @@ import java.util.List;
  * Created by Linuxea on 2017-09-11.
  */
 public class AriticleManagerService {
-
+	
 	public static final AriticleManagerService SERVICE = new AriticleManagerService();
 	public static final TagManagerService TAG_MANAGER_SERVICE = TagManagerService.SERVICE;
 	private static final Logger LOGGER = LoggerFactory.getLogger(AriticleManagerService.class);
-
+	
 	public Kv add(Article article, String labels) {
 		List<String> labelsId = TAG_MANAGER_SERVICE.checkLabels(labels);
 		Kv kv = Kv.create();
@@ -33,8 +33,8 @@ public class AriticleManagerService {
 		bindTag(labelsId, article.getId());
 		return kv;
 	}
-
-
+	
+	
 	/**
 	 * 标签绑定
 	 *
@@ -51,12 +51,12 @@ public class AriticleManagerService {
 			articleWithTag.save();
 		}
 	}
-
-
+	
+	
 	public boolean update(Article article) {
 		return article.update();
 	}
-
+	
 	public boolean delete(Article article) {
 		article.setStatus(0);
 		boolean ok = article.update();
@@ -65,14 +65,14 @@ public class AriticleManagerService {
 		}
 		return ok;
 	}
-
+	
 	/**
 	 * 列出文章每十条
 	 */
 	public void find() {
-
+	
 	}
-
+	
 	/**
 	 * 加载一条详情
 	 *
